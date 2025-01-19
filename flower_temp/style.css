@@ -1,0 +1,118 @@
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #ff69b4;
+    padding: 20px 0;
+    color: #fff;
+}
+
+header .logo h1 {
+    margin-left: 20px;
+    font-size: 2rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #ff0;
+}
+
+.hero {
+    background: url('https://via.placeholder.com/1500x600') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 80px 0;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero .btn {
+    padding: 10px 20px;
+    background-color: #ff69b4;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.hero .btn:hover {
+    background-color: #ff1493;
+}
+
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.about {
+    background-color: #fff;
+}
+
+.catalog {
+    background-color: #f0f0f0;
+}
+
+.catalog-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.catalog-items .item {
+    text-align: center;
+    padding: 10px;
+}
+
+.catalog-items .item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.contact {
+    background-color: #fff;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
