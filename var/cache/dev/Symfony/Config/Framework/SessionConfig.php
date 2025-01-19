@@ -57,7 +57,7 @@ class SessionConfig
     }
 
     /**
-     * @default 'session.handler.native_file'
+     * @default null
      * @param ParamConfigurator|mixed $value
      * @return $this
      */
@@ -213,7 +213,7 @@ class SessionConfig
     }
 
     /**
-     * @default '%kernel.cache_dir%/sessions'
+     * @default null
      * @param ParamConfigurator|mixed $value
      * @return $this
      */

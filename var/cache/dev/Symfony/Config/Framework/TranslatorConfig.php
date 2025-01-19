@@ -38,11 +38,11 @@ class TranslatorConfig
     }
 
     /**
-     * @param mixed $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
      *
      * @return $this
      */
-    public function fallbacks(mixed $value): static
+    public function fallbacks(ParamConfigurator|string|array $value): static
     {
         $this->_usedProperties['fallbacks'] = true;
         $this->fallbacks = $value;
@@ -117,10 +117,13 @@ class TranslatorConfig
     }
 
     /**
+     * @template TValue
+     * @param TValue $value
      * @default {"enabled":false,"accents":true,"expansion_factor":1,"brackets":true,"parse_html":false,"localizable_html_attributes":[]}
      * @return \Symfony\Config\Framework\Translator\PseudoLocalizationConfig|$this
+     * @psalm-return (TValue is array ? \Symfony\Config\Framework\Translator\PseudoLocalizationConfig : static)
      */
-    public function pseudoLocalization(mixed $value = []): \Symfony\Config\Framework\Translator\PseudoLocalizationConfig|static
+    public function pseudoLocalization(array $value = []): \Symfony\Config\Framework\Translator\PseudoLocalizationConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['pseudoLocalization'] = true;
@@ -206,7 +209,7 @@ class TranslatorConfig
 
         if (array_key_exists('providers', $value)) {
             $this->_usedProperties['providers'] = true;
-            $this->providers = array_map(function ($v) { return new \Symfony\Config\Framework\Translator\ProviderConfig($v); }, $value['providers']);
+            $this->providers = array_map(fn ($v) => new \Symfony\Config\Framework\Translator\ProviderConfig($v), $value['providers']);
             unset($value['providers']);
         }
 
@@ -243,7 +246,7 @@ class TranslatorConfig
             $output['pseudo_localization'] = $this->pseudoLocalization instanceof \Symfony\Config\Framework\Translator\PseudoLocalizationConfig ? $this->pseudoLocalization->toArray() : $this->pseudoLocalization;
         }
         if (isset($this->_usedProperties['providers'])) {
-            $output['providers'] = array_map(function ($v) { return $v->toArray(); }, $this->providers);
+            $output['providers'] = array_map(fn ($v) => $v->toArray(), $this->providers);
         }
 
         return $output;

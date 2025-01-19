@@ -50,10 +50,13 @@ class RetryFailedConfig
     }
 
     /**
+     * @template TValue
+     * @param TValue $value
      * A list of HTTP status code that triggers a retry
      * @return \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailed\HttpCodeConfig|$this
+     * @psalm-return (TValue is array ? \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailed\HttpCodeConfig : static)
      */
-    public function httpCode(string $code, mixed $value = []): \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailed\HttpCodeConfig|static
+    public function httpCode(string $code, array $value = []): \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailed\HttpCodeConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['httpCodes'] = true;
@@ -157,7 +160,7 @@ class RetryFailedConfig
 
         if (array_key_exists('http_codes', $value)) {
             $this->_usedProperties['httpCodes'] = true;
-            $this->httpCodes = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailed\HttpCodeConfig($v) : $v; }, $value['http_codes']);
+            $this->httpCodes = array_map(fn ($v) => \is_array($v) ? new \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailed\HttpCodeConfig($v) : $v, $value['http_codes']);
             unset($value['http_codes']);
         }
 
@@ -206,7 +209,7 @@ class RetryFailedConfig
             $output['retry_strategy'] = $this->retryStrategy;
         }
         if (isset($this->_usedProperties['httpCodes'])) {
-            $output['http_codes'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailed\HttpCodeConfig ? $v->toArray() : $v; }, $this->httpCodes);
+            $output['http_codes'] = array_map(fn ($v) => $v instanceof \Symfony\Config\Framework\HttpClient\DefaultOptions\RetryFailed\HttpCodeConfig ? $v->toArray() : $v, $this->httpCodes);
         }
         if (isset($this->_usedProperties['maxRetries'])) {
             $output['max_retries'] = $this->maxRetries;

@@ -8,6 +8,7 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
+        '/posts' => [[['_route' => 'app_posts', '_controller' => 'App\\Controller\\PostsController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

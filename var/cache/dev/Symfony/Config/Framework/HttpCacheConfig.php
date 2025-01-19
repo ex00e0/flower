@@ -16,10 +16,12 @@ class HttpCacheConfig
     private $traceHeader;
     private $defaultTtl;
     private $privateHeaders;
+    private $skipResponseHeaders;
     private $allowReload;
     private $allowRevalidate;
     private $staleWhileRevalidate;
     private $staleIfError;
+    private $terminateOnCacheHit;
     private $_usedProperties = [];
 
     /**
@@ -101,6 +103,19 @@ class HttpCacheConfig
     }
 
     /**
+     * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
+     *
+     * @return $this
+     */
+    public function skipResponseHeaders(ParamConfigurator|array $value): static
+    {
+        $this->_usedProperties['skipResponseHeaders'] = true;
+        $this->skipResponseHeaders = $value;
+
+        return $this;
+    }
+
+    /**
      * @default null
      * @param ParamConfigurator|bool $value
      * @return $this
@@ -152,6 +167,19 @@ class HttpCacheConfig
         return $this;
     }
 
+    /**
+     * @default null
+     * @param ParamConfigurator|bool $value
+     * @return $this
+     */
+    public function terminateOnCacheHit($value): static
+    {
+        $this->_usedProperties['terminateOnCacheHit'] = true;
+        $this->terminateOnCacheHit = $value;
+
+        return $this;
+    }
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('enabled', $value)) {
@@ -190,6 +218,12 @@ class HttpCacheConfig
             unset($value['private_headers']);
         }
 
+        if (array_key_exists('skip_response_headers', $value)) {
+            $this->_usedProperties['skipResponseHeaders'] = true;
+            $this->skipResponseHeaders = $value['skip_response_headers'];
+            unset($value['skip_response_headers']);
+        }
+
         if (array_key_exists('allow_reload', $value)) {
             $this->_usedProperties['allowReload'] = true;
             $this->allowReload = $value['allow_reload'];
@@ -212,6 +246,12 @@ class HttpCacheConfig
             $this->_usedProperties['staleIfError'] = true;
             $this->staleIfError = $value['stale_if_error'];
             unset($value['stale_if_error']);
+        }
+
+        if (array_key_exists('terminate_on_cache_hit', $value)) {
+            $this->_usedProperties['terminateOnCacheHit'] = true;
+            $this->terminateOnCacheHit = $value['terminate_on_cache_hit'];
+            unset($value['terminate_on_cache_hit']);
         }
 
         if ([] !== $value) {
@@ -240,6 +280,9 @@ class HttpCacheConfig
         if (isset($this->_usedProperties['privateHeaders'])) {
             $output['private_headers'] = $this->privateHeaders;
         }
+        if (isset($this->_usedProperties['skipResponseHeaders'])) {
+            $output['skip_response_headers'] = $this->skipResponseHeaders;
+        }
         if (isset($this->_usedProperties['allowReload'])) {
             $output['allow_reload'] = $this->allowReload;
         }
@@ -251,6 +294,9 @@ class HttpCacheConfig
         }
         if (isset($this->_usedProperties['staleIfError'])) {
             $output['stale_if_error'] = $this->staleIfError;
+        }
+        if (isset($this->_usedProperties['terminateOnCacheHit'])) {
+            $output['terminate_on_cache_hit'] = $this->terminateOnCacheHit;
         }
 
         return $output;

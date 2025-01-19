@@ -13,6 +13,7 @@ use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 class NotifierConfig 
 {
     private $enabled;
+    private $messageBus;
     private $chatterTransports;
     private $texterTransports;
     private $notificationOnFailedMessages;
@@ -29,6 +30,20 @@ class NotifierConfig
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
+
+        return $this;
+    }
+
+    /**
+     * The message bus to use. Defaults to the default bus if the Messenger component is installed.
+     * @default null
+     * @param ParamConfigurator|mixed $value
+     * @return $this
+     */
+    public function messageBus($value): static
+    {
+        $this->_usedProperties['messageBus'] = true;
+        $this->messageBus = $value;
 
         return $this;
     }
@@ -71,7 +86,7 @@ class NotifierConfig
     /**
      * @return $this
      */
-    public function channelPolicy(string $name, mixed $value): static
+    public function channelPolicy(string $name, ParamConfigurator|string|array $value): static
     {
         $this->_usedProperties['channelPolicy'] = true;
         $this->channelPolicy[$name] = $value;
@@ -92,6 +107,12 @@ class NotifierConfig
             $this->_usedProperties['enabled'] = true;
             $this->enabled = $value['enabled'];
             unset($value['enabled']);
+        }
+
+        if (array_key_exists('message_bus', $value)) {
+            $this->_usedProperties['messageBus'] = true;
+            $this->messageBus = $value['message_bus'];
+            unset($value['message_bus']);
         }
 
         if (array_key_exists('chatter_transports', $value)) {
@@ -120,7 +141,7 @@ class NotifierConfig
 
         if (array_key_exists('admin_recipients', $value)) {
             $this->_usedProperties['adminRecipients'] = true;
-            $this->adminRecipients = array_map(function ($v) { return new \Symfony\Config\Framework\Notifier\AdminRecipientConfig($v); }, $value['admin_recipients']);
+            $this->adminRecipients = array_map(fn ($v) => new \Symfony\Config\Framework\Notifier\AdminRecipientConfig($v), $value['admin_recipients']);
             unset($value['admin_recipients']);
         }
 
@@ -135,6 +156,9 @@ class NotifierConfig
         if (isset($this->_usedProperties['enabled'])) {
             $output['enabled'] = $this->enabled;
         }
+        if (isset($this->_usedProperties['messageBus'])) {
+            $output['message_bus'] = $this->messageBus;
+        }
         if (isset($this->_usedProperties['chatterTransports'])) {
             $output['chatter_transports'] = $this->chatterTransports;
         }
@@ -148,7 +172,7 @@ class NotifierConfig
             $output['channel_policy'] = $this->channelPolicy;
         }
         if (isset($this->_usedProperties['adminRecipients'])) {
-            $output['admin_recipients'] = array_map(function ($v) { return $v->toArray(); }, $this->adminRecipients);
+            $output['admin_recipients'] = array_map(fn ($v) => $v->toArray(), $this->adminRecipients);
         }
 
         return $output;

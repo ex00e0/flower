@@ -21,6 +21,7 @@ class MessengerConfig
     private $transports;
     private $failureTransport;
     private $resetOnMessage;
+    private $stopWorkerOnSignals;
     private $defaultBus;
     private $buses;
     private $_usedProperties = [];
@@ -39,9 +40,12 @@ class MessengerConfig
     }
 
     /**
+     * @template TValue
+     * @param TValue $value
      * @return \Symfony\Config\Framework\Messenger\RoutingConfig|$this
+     * @psalm-return (TValue is array ? \Symfony\Config\Framework\Messenger\RoutingConfig : static)
      */
-    public function routing(string $message_class, mixed $value = []): \Symfony\Config\Framework\Messenger\RoutingConfig|static
+    public function routing(string $message_class, array $value = []): \Symfony\Config\Framework\Messenger\RoutingConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['routing'] = true;
@@ -76,9 +80,12 @@ class MessengerConfig
     }
 
     /**
+     * @template TValue
+     * @param TValue $value
      * @return \Symfony\Config\Framework\Messenger\TransportConfig|$this
+     * @psalm-return (TValue is array ? \Symfony\Config\Framework\Messenger\TransportConfig : static)
      */
-    public function transport(string $name, mixed $value = []): \Symfony\Config\Framework\Messenger\TransportConfig|static
+    public function transport(string $name, string|array $value = []): \Symfony\Config\Framework\Messenger\TransportConfig|static
     {
         if (!\is_array($value)) {
             $this->_usedProperties['transports'] = true;
@@ -127,6 +134,19 @@ class MessengerConfig
     }
 
     /**
+     * @param ParamConfigurator|list<ParamConfigurator|int> $value
+     *
+     * @return $this
+     */
+    public function stopWorkerOnSignals(ParamConfigurator|array $value): static
+    {
+        $this->_usedProperties['stopWorkerOnSignals'] = true;
+        $this->stopWorkerOnSignals = $value;
+
+        return $this;
+    }
+
+    /**
      * @default null
      * @param ParamConfigurator|mixed $value
      * @return $this
@@ -140,7 +160,7 @@ class MessengerConfig
     }
 
     /**
-     * @default {"messenger.bus.default":{"default_middleware":true,"middleware":[]}}
+     * @default {"messenger.bus.default":{"default_middleware":{"enabled":true,"allow_no_handlers":false,"allow_no_senders":true},"middleware":[]}}
     */
     public function bus(string $name, array $value = []): \Symfony\Config\Framework\Messenger\BusConfig
     {
@@ -164,7 +184,7 @@ class MessengerConfig
 
         if (array_key_exists('routing', $value)) {
             $this->_usedProperties['routing'] = true;
-            $this->routing = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Framework\Messenger\RoutingConfig($v) : $v; }, $value['routing']);
+            $this->routing = array_map(fn ($v) => \is_array($v) ? new \Symfony\Config\Framework\Messenger\RoutingConfig($v) : $v, $value['routing']);
             unset($value['routing']);
         }
 
@@ -176,7 +196,7 @@ class MessengerConfig
 
         if (array_key_exists('transports', $value)) {
             $this->_usedProperties['transports'] = true;
-            $this->transports = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Framework\Messenger\TransportConfig($v) : $v; }, $value['transports']);
+            $this->transports = array_map(fn ($v) => \is_array($v) ? new \Symfony\Config\Framework\Messenger\TransportConfig($v) : $v, $value['transports']);
             unset($value['transports']);
         }
 
@@ -192,6 +212,12 @@ class MessengerConfig
             unset($value['reset_on_message']);
         }
 
+        if (array_key_exists('stop_worker_on_signals', $value)) {
+            $this->_usedProperties['stopWorkerOnSignals'] = true;
+            $this->stopWorkerOnSignals = $value['stop_worker_on_signals'];
+            unset($value['stop_worker_on_signals']);
+        }
+
         if (array_key_exists('default_bus', $value)) {
             $this->_usedProperties['defaultBus'] = true;
             $this->defaultBus = $value['default_bus'];
@@ -200,7 +226,7 @@ class MessengerConfig
 
         if (array_key_exists('buses', $value)) {
             $this->_usedProperties['buses'] = true;
-            $this->buses = array_map(function ($v) { return new \Symfony\Config\Framework\Messenger\BusConfig($v); }, $value['buses']);
+            $this->buses = array_map(fn ($v) => new \Symfony\Config\Framework\Messenger\BusConfig($v), $value['buses']);
             unset($value['buses']);
         }
 
@@ -216,13 +242,13 @@ class MessengerConfig
             $output['enabled'] = $this->enabled;
         }
         if (isset($this->_usedProperties['routing'])) {
-            $output['routing'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Framework\Messenger\RoutingConfig ? $v->toArray() : $v; }, $this->routing);
+            $output['routing'] = array_map(fn ($v) => $v instanceof \Symfony\Config\Framework\Messenger\RoutingConfig ? $v->toArray() : $v, $this->routing);
         }
         if (isset($this->_usedProperties['serializer'])) {
             $output['serializer'] = $this->serializer->toArray();
         }
         if (isset($this->_usedProperties['transports'])) {
-            $output['transports'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Framework\Messenger\TransportConfig ? $v->toArray() : $v; }, $this->transports);
+            $output['transports'] = array_map(fn ($v) => $v instanceof \Symfony\Config\Framework\Messenger\TransportConfig ? $v->toArray() : $v, $this->transports);
         }
         if (isset($this->_usedProperties['failureTransport'])) {
             $output['failure_transport'] = $this->failureTransport;
@@ -230,11 +256,14 @@ class MessengerConfig
         if (isset($this->_usedProperties['resetOnMessage'])) {
             $output['reset_on_message'] = $this->resetOnMessage;
         }
+        if (isset($this->_usedProperties['stopWorkerOnSignals'])) {
+            $output['stop_worker_on_signals'] = $this->stopWorkerOnSignals;
+        }
         if (isset($this->_usedProperties['defaultBus'])) {
             $output['default_bus'] = $this->defaultBus;
         }
         if (isset($this->_usedProperties['buses'])) {
-            $output['buses'] = array_map(function ($v) { return $v->toArray(); }, $this->buses);
+            $output['buses'] = array_map(fn ($v) => $v->toArray(), $this->buses);
         }
 
         return $output;

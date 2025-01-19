@@ -115,7 +115,7 @@ class AssetsConfig
     }
 
     /**
-     * @param mixed $value
+     * @param ParamConfigurator|list<ParamConfigurator|mixed>|mixed $value
      *
      * @return $this
      */
@@ -191,7 +191,7 @@ class AssetsConfig
 
         if (array_key_exists('packages', $value)) {
             $this->_usedProperties['packages'] = true;
-            $this->packages = array_map(function ($v) { return new \Symfony\Config\Framework\Assets\PackageConfig($v); }, $value['packages']);
+            $this->packages = array_map(fn ($v) => new \Symfony\Config\Framework\Assets\PackageConfig($v), $value['packages']);
             unset($value['packages']);
         }
 
@@ -228,7 +228,7 @@ class AssetsConfig
             $output['base_urls'] = $this->baseUrls;
         }
         if (isset($this->_usedProperties['packages'])) {
-            $output['packages'] = array_map(function ($v) { return $v->toArray(); }, $this->packages);
+            $output['packages'] = array_map(fn ($v) => $v->toArray(), $this->packages);
         }
 
         return $output;

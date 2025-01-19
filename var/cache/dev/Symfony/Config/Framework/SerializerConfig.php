@@ -14,6 +14,7 @@ class SerializerConfig
 {
     private $enabled;
     private $enableAnnotations;
+    private $enableAttributes;
     private $nameConverter;
     private $circularReferenceHandler;
     private $maxDepthHandler;
@@ -35,7 +36,7 @@ class SerializerConfig
     }
 
     /**
-     * @default true
+     * @default null
      * @param ParamConfigurator|bool $value
      * @return $this
      */
@@ -43,6 +44,19 @@ class SerializerConfig
     {
         $this->_usedProperties['enableAnnotations'] = true;
         $this->enableAnnotations = $value;
+
+        return $this;
+    }
+
+    /**
+     * @default true
+     * @param ParamConfigurator|bool $value
+     * @return $this
+     */
+    public function enableAttributes($value): static
+    {
+        $this->_usedProperties['enableAttributes'] = true;
+        $this->enableAttributes = $value;
 
         return $this;
     }
@@ -126,6 +140,12 @@ class SerializerConfig
             unset($value['enable_annotations']);
         }
 
+        if (array_key_exists('enable_attributes', $value)) {
+            $this->_usedProperties['enableAttributes'] = true;
+            $this->enableAttributes = $value['enable_attributes'];
+            unset($value['enable_attributes']);
+        }
+
         if (array_key_exists('name_converter', $value)) {
             $this->_usedProperties['nameConverter'] = true;
             $this->nameConverter = $value['name_converter'];
@@ -169,6 +189,9 @@ class SerializerConfig
         }
         if (isset($this->_usedProperties['enableAnnotations'])) {
             $output['enable_annotations'] = $this->enableAnnotations;
+        }
+        if (isset($this->_usedProperties['enableAttributes'])) {
+            $output['enable_attributes'] = $this->enableAttributes;
         }
         if (isset($this->_usedProperties['nameConverter'])) {
             $output['name_converter'] = $this->nameConverter;

@@ -146,7 +146,10 @@ class CacheConfig
     }
 
     /**
+     * @template TValue
+     * @param TValue $value
      * @return \Symfony\Config\Framework\Cache\PoolConfig|$this
+     * @psalm-return (TValue is array ? \Symfony\Config\Framework\Cache\PoolConfig : static)
      */
     public function pool(string $name, mixed $value = []): \Symfony\Config\Framework\Cache\PoolConfig|static
     {
@@ -225,7 +228,7 @@ class CacheConfig
 
         if (array_key_exists('pools', $value)) {
             $this->_usedProperties['pools'] = true;
-            $this->pools = array_map(function ($v) { return \is_array($v) ? new \Symfony\Config\Framework\Cache\PoolConfig($v) : $v; }, $value['pools']);
+            $this->pools = array_map(fn ($v) => \is_array($v) ? new \Symfony\Config\Framework\Cache\PoolConfig($v) : $v, $value['pools']);
             unset($value['pools']);
         }
 
@@ -265,7 +268,7 @@ class CacheConfig
             $output['default_pdo_provider'] = $this->defaultPdoProvider;
         }
         if (isset($this->_usedProperties['pools'])) {
-            $output['pools'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Framework\Cache\PoolConfig ? $v->toArray() : $v; }, $this->pools);
+            $output['pools'] = array_map(fn ($v) => $v instanceof \Symfony\Config\Framework\Cache\PoolConfig ? $v->toArray() : $v, $this->pools);
         }
 
         return $output;

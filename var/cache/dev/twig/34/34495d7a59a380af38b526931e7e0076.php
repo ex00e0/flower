@@ -54,23 +54,22 @@ class __TwigTemplate_1dc59e51c6cb65462abc755d0b512d57 extends Template
         // line 5
         yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
         yield "</title>
-        <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">
+        <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
         ";
-        // line 8
-        yield "        ";
+        // line 7
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 11
+        // line 9
         yield "
         ";
-        // line 12
+        // line 10
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 15
+        // line 12
         yield "    </head>
     <body>
         ";
-        // line 17
+        // line 14
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 18
+        // line 15
         yield "    </body>
 </html>
 ";
@@ -97,7 +96,7 @@ class __TwigTemplate_1dc59e51c6cb65462abc755d0b512d57 extends Template
         yield from [];
     }
 
-    // line 8
+    // line 7
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -107,18 +106,15 @@ class __TwigTemplate_1dc59e51c6cb65462abc755d0b512d57 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 9
-        yield "            ";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getFunction('encore_entry_link_tags')->getCallable()("app"), "html", null, true);
-        yield "
-        ";
+        // line 8
+        yield "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
         yield from [];
     }
 
-    // line 12
+    // line 10
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -128,18 +124,15 @@ class __TwigTemplate_1dc59e51c6cb65462abc755d0b512d57 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 13
-        yield "            ";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getFunction('encore_entry_script_tags')->getCallable()("app"), "html", null, true);
-        yield "
-        ";
+        // line 11
+        yield "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
         yield from [];
     }
 
-    // line 17
+    // line 14
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -168,7 +161,7 @@ class __TwigTemplate_1dc59e51c6cb65462abc755d0b512d57 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  143 => 17,  132 => 13,  122 => 12,  111 => 9,  101 => 8,  84 => 5,  74 => 18,  72 => 17,  68 => 15,  66 => 12,  63 => 11,  60 => 8,  55 => 5,  49 => 1,);
+        return array (  136 => 14,  128 => 11,  118 => 10,  110 => 8,  100 => 7,  83 => 5,  73 => 15,  71 => 14,  67 => 12,  65 => 10,  62 => 9,  60 => 7,  55 => 5,  49 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -178,20 +171,17 @@ class __TwigTemplate_1dc59e51c6cb65462abc755d0b512d57 extends Template
     <head>
         <meta charset=\"UTF-8\">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "C:\\OSPanel\\domains\\flower\\templates\\base.html.twig");
+", "base.html.twig", "C:\\OSPanel\\domains\\flower_67\\templates\\base.html.twig");
     }
 }
