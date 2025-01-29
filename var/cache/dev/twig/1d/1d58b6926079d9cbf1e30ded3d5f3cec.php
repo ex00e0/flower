@@ -182,6 +182,6 @@ class __TwigTemplate_392c4fe4156984f35146681546bd9310 extends Template
         {% block body %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "C:\\OSPanel\\domains\\flower_67\\templates\\base.html.twig");
+", "base.html.twig", "C:\\OSPanel\\domains\\flower\\templates\\base.html.twig");
     }
 }
