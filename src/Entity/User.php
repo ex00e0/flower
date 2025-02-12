@@ -3,11 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
 class User
 {
     #[ORM\Id]
@@ -15,27 +13,24 @@ class User
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private ?array $password = null;
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: "user")]
+    private $orders;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\OneToMany(targetEntity: Cart::class, mappedBy: "user")]
+    private $carts;
+
+    #[ORM\Column(length: 255)]
     private ?string $login = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $password = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPassword(): ?array
-    {
-        return $this->password;
-    }
-
-    public function setPassword(?array $password): static
-    {
-        $this->password = $password;
-
-        return $this;
     }
 
     public function getLogin(): ?string
@@ -43,10 +38,58 @@ class User
         return $this->login;
     }
 
-    public function setLogin(?string $login): static
+    public function setLogin(string $login): static
     {
         $this->login = $login;
 
         return $this;
     }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getOrders(): ?array
+{
+    return $this->orders;
+}
+
+public function setOrders(array $orders): static
+{
+    $this->orders = $orders;
+
+    return $this;
+}
+
+public function getCarts(): ?array
+{
+    return $this->carts;
+}
+
+public function setCarts(array $carts): static
+{
+    $this->carts = $carts;
+
+    return $this;
+}
 }
