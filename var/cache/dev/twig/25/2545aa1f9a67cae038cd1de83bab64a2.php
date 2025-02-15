@@ -170,6 +170,6 @@ class __TwigTemplate_7bf3925792d90947920b9c3bd6a4a5dd extends Template
     </ul>
 </div>
 {% endblock %}
-", "posts/index.html.twig", "C:\\OSPanel\\domains\\flower\\templates\\posts\\index.html.twig");
+ ", "posts/index.html.twig", "C:\\OSPanel\\domains\\flower\\templates\\posts\\index.html.twig");
     }
 }
