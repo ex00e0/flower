@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+header {
+    background: #333;
+    display: grid;
+    place-items: center;
+    height: 60px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+.hero {
+    background: url('flowers.jpg') no-repeat center center/cover;
+    color: white;
+    display: grid;
+    place-items: center;
+    height: 300px;
+}
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    width: 100%;
+}
+.product {
+    background: white;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 250px;
+}
+.delivery {
+    background: #eee;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    width: 100%;
+}
+.btn {
+    background: #ff5a5f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: grid;
+    place-items: center;
+    height: 40px;
+    width: 150px;
+}
+footer {
+    background: #333;
+    color: white;
+    display: grid;
+    place-items: center;
+    height: 50px;
+}

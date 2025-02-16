@@ -32,7 +32,6 @@ class __TwigTemplate_953313a2493504743128152697399ed0 extends Template
         $this->parent = false;
 
         $this->blocks = [
-            'title' => [$this, 'block_title'],
             'stylesheets' => [$this, 'block_stylesheets'],
             'javascripts' => [$this, 'block_javascripts'],
             'body' => [$this, 'block_body'],
@@ -53,57 +52,43 @@ class __TwigTemplate_953313a2493504743128152697399ed0 extends Template
 <html>
     <head>
         <meta charset=\"UTF-8\">
-        <title>";
-        // line 5
-        yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
-        yield "</title>
-        <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+        <title>Цветочный салон</title>
         ";
         // line 7
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 9
+        // line 11
         yield "
         ";
-        // line 10
-        yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
         // line 12
+        yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
+        // line 14
         yield "    </head>
     <body>
+        <header>
+            <div class=\"logo\">
+                <h1>flower</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href=\"#home\">Главная</a></li>
+                    <li><a href=\"#about\">О нас</a></li>
+                    <li><a href=\"#catalog\">Каталог</a></li>
+                    <li><a href=\"#contact\">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
         ";
-        // line 14
+        // line 29
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 15
+        // line 30
         yield "    </body>
-</html>
-";
+</html>";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        yield from [];
-    }
-
-    // line 5
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
-    public function block_title(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        yield "Welcome!";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         yield from [];
     }
@@ -122,7 +107,9 @@ class __TwigTemplate_953313a2493504743128152697399ed0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 8
-        yield "        ";
+        yield "        <link rel=\"stylesheet\" href=\"style.css\">
+
+        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -132,7 +119,7 @@ class __TwigTemplate_953313a2493504743128152697399ed0 extends Template
         yield from [];
     }
 
-    // line 10
+    // line 12
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -145,7 +132,7 @@ class __TwigTemplate_953313a2493504743128152697399ed0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 11
+        // line 13
         yield "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -156,7 +143,7 @@ class __TwigTemplate_953313a2493504743128152697399ed0 extends Template
         yield from [];
     }
 
-    // line 14
+    // line 29
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -191,7 +178,7 @@ class __TwigTemplate_953313a2493504743128152697399ed0 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  160 => 14,  149 => 11,  136 => 10,  125 => 8,  112 => 7,  89 => 5,  76 => 15,  74 => 14,  70 => 12,  68 => 10,  65 => 9,  63 => 7,  58 => 5,  52 => 1,);
+        return array (  147 => 29,  136 => 13,  123 => 12,  110 => 8,  97 => 7,  85 => 30,  83 => 29,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -200,18 +187,32 @@ class __TwigTemplate_953313a2493504743128152697399ed0 extends Template
 <html>
     <head>
         <meta charset=\"UTF-8\">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+        <title>Цветочный салон</title>
         {% block stylesheets %}
+        <link rel=\"stylesheet\" href=\"style.css\">
+
         {% endblock %}
 
         {% block javascripts %}
         {% endblock %}
     </head>
     <body>
+        <header>
+            <div class=\"logo\">
+                <h1>flower</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href=\"#home\">Главная</a></li>
+                    <li><a href=\"#about\">О нас</a></li>
+                    <li><a href=\"#catalog\">Каталог</a></li>
+                    <li><a href=\"#contact\">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
         {% block body %}{% endblock %}
     </body>
-</html>
-", "base.html.twig", "C:\\OSPanel\\domains\\flower\\templates\\base.html.twig");
+</html>", "base.html.twig", "C:\\OSPanel\\domains\\flower\\templates\\base.html.twig");
     }
 }
