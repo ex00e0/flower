@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Цветочный салон</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+        <div></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="register.html">Регистрация</a></li>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="delivery.html">Доставка</a></li>
+            </ul>
+        </nav>
+        </header>
+        {% block body %}{% endblock %}
+    </body>
+</html>

@@ -1,80 +1,48 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Цветочный салон</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-{% block title %}Hello PostsController!{% endblock %}
+        {% endblock %}
 
-{% block body %}
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+        
+        <header class="header_main">
+            <div class="nav_row">
+                <div class="logo r1 c1">FLOWER</div>
+                <nav class="nav_main r1 c3">
+                    <a href="index.html">Главная</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="catalog.html">О нас</a>
+                   
+                    {% if is_granted('IS_AUTHENTICATED_FULLY')%}
+                         <a href="delivery.html">Заказы</a> 
+                         <a href="login.html"><img src="{{ asset('images/shopping-cart (1).png') }}" ></a>
+                    {% else %}
+                        <a href="catalog.html">Контакты</a>
+                        <a href="login.html"><img src="{{ asset('images/enter.png') }}" ></a>
+                    {% endif %}
+
+                </nav>
+            </div>
+            <div class="header_info">
+                <div class="r2 c1 hi_1">СОЗДАЕМ ЛЮБОВЬ <br> ЧЕРЕЗ ЦВЕТЫ</div>
+            </div>
+        </header>
+        
+
 
     <main>
-        <section class="hero">
-            <h1>Создаём любовь через цветы</h1>
-            <p>Мы выращиваем наши цветы с любовью и вниманием специально для вас.</p>
-            <a href="catalog.html" class="btn">Перейти в каталог</a>
-        </section>
         
-        <section class="products">
-            <div class="product">
-                <img src="flower1.jpg" alt="Букет дня">
-                <h3>Букет дня</h3>
-                <p>3800 руб.</p>
-            </div>
-            <div class="product">
-                <img src="flower2.jpg" alt="Букет недели">
-                <h3>Букет недели</h3>
-                <p>7300 руб.</p>
-            </div>
-            <div class="product">
-                <img src="flower3.jpg" alt="Композиция 'Lee'">
-                <h3>Композиция "Lee"</h3>
-                <p>4200 руб.</p>
-            </div>
-            <div class="product">
-                <img src="flower4.jpg" alt="Композиция 'Sea Lo'">
-                <h3>Композиция "Sea Lo"</h3>
-                <p>5400 руб.</p>
-            </div>
-        </section>
-         <section class="products">
-            <div class="product">
-                <img src="flower1.jpg" alt="Букет дня">
-                <h3>Букет дня</h3>
-                <p>3800 руб.</p>
-            </div>
-            <div class="product">
-                <img src="flower2.jpg" alt="Букет недели">
-                <h3>Букет недели</h3>
-                <p>7300 руб.</p>
-            </div>
-            <div class="product">
-                <img src="flower3.jpg" alt="Композиция 'Lee'">
-                <h3>Композиция "Lee"</h3>
-                <p>4200 руб.</p>
-            </div>
-            <div class="product">
-                <img src="flower4.jpg" alt="Композиция 'Sea Lo'">
-                <h3>Композиция "Sea Lo"</h3>
-                <p>5400 руб.</p>
-            </div>
-        </section>
-        
-        <section class="delivery">
-            <h2>Доставка</h2>
-            <div>
-                <p>Курьером по Москве - 600 руб.</p>
-            </div>
-            <div>
-                <p>Срочная доставка по Москве - 1500 руб.</p>
-            </div>
-            <div>
-                <p>В другие города - 3000 руб.</p>
-            </div>
-            <a href="#" class="btn">Сделать заказ</a>
-        </section>
     </main>
-    
-    <footer>
-        <p>&copy; 2025 Kami Flowers. Все права защищены.</p>
-    </footer>
 
-
-{% endblock %}
+    </body>
+</html>
  

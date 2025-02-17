@@ -65,21 +65,15 @@ class __TwigTemplate_888f232c80de54d2e6a079fe368b93ff extends Template
         // line 14
         yield "    </head>
     <body>
+        
         <header>
-        <nav>
-            <ul>
-                <li><a href=\"index.html\">Главная</a></li>
-                <li><a href=\"catalog.html\">Каталог</a></li>
-                <li><a href=\"register.html\">Регистрация</a></li>
-                <li><a href=\"login.html\">Вход</a></li>
-                <li><a href=\"delivery.html\">Доставка</a></li>
-            </ul>
-        </nav>
+            <div></div>
         </header>
+       
         ";
-        // line 27
+        // line 21
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 28
+        // line 22
         yield "    </body>
 </html>";
         
@@ -143,7 +137,7 @@ class __TwigTemplate_888f232c80de54d2e6a079fe368b93ff extends Template
         yield from [];
     }
 
-    // line 27
+    // line 21
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -178,7 +172,7 @@ class __TwigTemplate_888f232c80de54d2e6a079fe368b93ff extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  147 => 27,  136 => 13,  123 => 12,  108 => 8,  95 => 7,  83 => 28,  81 => 27,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
+        return array (  141 => 21,  130 => 13,  117 => 12,  102 => 8,  89 => 7,  77 => 22,  75 => 21,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -198,17 +192,11 @@ class __TwigTemplate_888f232c80de54d2e6a079fe368b93ff extends Template
         {% endblock %}
     </head>
     <body>
+        
         <header>
-        <nav>
-            <ul>
-                <li><a href=\"index.html\">Главная</a></li>
-                <li><a href=\"catalog.html\">Каталог</a></li>
-                <li><a href=\"register.html\">Регистрация</a></li>
-                <li><a href=\"login.html\">Вход</a></li>
-                <li><a href=\"delivery.html\">Доставка</a></li>
-            </ul>
-        </nav>
+            <div></div>
         </header>
+       
         {% block body %}{% endblock %}
     </body>
 </html>", "base.html.twig", "C:\\OSPanel\\domains\\flower\\templates\\base.html.twig");
