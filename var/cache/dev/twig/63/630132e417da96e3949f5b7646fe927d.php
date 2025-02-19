@@ -98,13 +98,22 @@ class __TwigTemplate_9e20e6f453a899c74d672ec141399d51 extends Template
             </div>
             <div class=\"header_info\">
                 <div class=\"r2 c1 hi_1\">СОЗДАЕМ ЛЮБОВЬ <br> ЧЕРЕЗ ЦВЕТЫ</div>
+                <div class=\"r4 c1 hi_2\">мы выращиваем наши цветы с любовью и заботой <br> специально для вас, <br> чтобы вы всегда могли любоваться <br> свежим и красивым букетом от Flower</div>
+                <div class=\"r5 c1 hi_3\"><div>ПЕРЕЙТИ В КАТАЛОГ</div></div>
             </div>
         </header>
-        
-
-
     <main>
-        
+        <section class=\"cat_main\">
+            <div class=\"r1 c2 ct_1\"><div>НАШИ ЦВЕТЫ</div></div>
+            <div class=\"r1 c4 ct_2\"><div>посмотреть все</div></div>
+            <div class=\"r2 c2 ct_3\">
+                <div>
+                    <div class=\"ct_img\"></div>
+                    <div>Букет белых гипсофилов</div>
+                    <div>3200 р.</div>
+                </div>
+            </div>
+        </section>
     </main>
 
     </body>
@@ -192,7 +201,7 @@ class __TwigTemplate_9e20e6f453a899c74d672ec141399d51 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  164 => 13,  151 => 12,  136 => 8,  123 => 7,  96 => 32,  91 => 30,  88 => 29,  83 => 27,  80 => 26,  78 => 25,  65 => 14,  63 => 12,  60 => 11,  58 => 7,  50 => 1,);
+        return array (  173 => 13,  160 => 12,  145 => 8,  132 => 7,  96 => 32,  91 => 30,  88 => 29,  83 => 27,  80 => 26,  78 => 25,  65 => 14,  63 => 12,  60 => 11,  58 => 7,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -233,13 +242,22 @@ class __TwigTemplate_9e20e6f453a899c74d672ec141399d51 extends Template
             </div>
             <div class=\"header_info\">
                 <div class=\"r2 c1 hi_1\">СОЗДАЕМ ЛЮБОВЬ <br> ЧЕРЕЗ ЦВЕТЫ</div>
+                <div class=\"r4 c1 hi_2\">мы выращиваем наши цветы с любовью и заботой <br> специально для вас, <br> чтобы вы всегда могли любоваться <br> свежим и красивым букетом от Flower</div>
+                <div class=\"r5 c1 hi_3\"><div>ПЕРЕЙТИ В КАТАЛОГ</div></div>
             </div>
         </header>
-        
-
-
     <main>
-        
+        <section class=\"cat_main\">
+            <div class=\"r1 c2 ct_1\"><div>НАШИ ЦВЕТЫ</div></div>
+            <div class=\"r1 c4 ct_2\"><div>посмотреть все</div></div>
+            <div class=\"r2 c2 ct_3\">
+                <div>
+                    <div class=\"ct_img\"></div>
+                    <div>Букет белых гипсофилов</div>
+                    <div>3200 р.</div>
+                </div>
+            </div>
+        </section>
     </main>
 
     </body>

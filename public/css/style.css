@@ -92,6 +92,14 @@ footer {
     font-family: "Raleway";
     src: url("../fonts/Raleway-Regular.woff");
 }
+@font-face {
+    font-family: "Ph B";
+    src: url("../fonts/Philosopher-Bold.woff");
+}
+@font-face {
+    font-family: "Ph R";
+    src: url("../fonts/Philosopher-Regular.woff");
+}
 
 .r1 {
     grid-row: 1;
@@ -309,7 +317,7 @@ a {
 }
 .header_info {
     display: grid;
-    grid-template-rows: 30% 23% 1fr 8%;
+    grid-template-rows: 30% 23% 5% 1fr 7% 8%;
     grid-template-columns: 100%;
 }
 .hi_1 {
@@ -321,4 +329,75 @@ a {
     font-weight: bold;
     line-height: 7vmax;
     letter-spacing: 0.35vmax;
+}
+.hi_2 {
+    font-family: "Ph R";
+    color:white;
+    justify-self: center;
+    text-align: center;
+    font-size: 1.8vmax;
+    line-height: 2vmax;
+}
+.hi_3 {
+    width:23%;
+    display: grid;
+    background-color: white;
+    color: black;
+    font-family: "Inter";
+    font-size: 1.5vmax;
+    align-items: center;
+    justify-items: center;
+    justify-self: center;
+    font-weight: bold;
+}
+.cat_main {
+    height: 72vmax;
+    display: grid;
+    grid-template-rows: 18% 1fr 5%;
+    grid-template-columns: 13% 53% 5% 1fr;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), url('../images/nn.jpg');
+    background-size: cover;
+}
+.ct_1 {
+    font-family: "Raleway";
+    color:black;
+    font-size: 4.7vmax;
+    font-weight: bold;
+    align-items: center;
+    display: grid;
+}
+.ct_2 {
+    display: grid;
+    font-family: "Ph R";
+    color:black;
+    font-size: 1.8vmax;
+    align-items: center;
+    justify-items: center;
+    width: 70%;
+    border-radius: 0.4vmax;
+    border: 0.15vmax solid black;
+    height: 30%;
+    align-self: center;
+}
+.ct_3 {
+    display: grid;
+    grid-template-rows: 1fr 1% 1fr;
+    grid-template-columns: 1fr 10% 1fr;
+}
+.ct_3 > div {
+    display: grid;
+    grid-template-rows: 85% 1fr 1fr;
+    grid-template-columns: 100%;
+    justify-items: center;
+    align-items: center;
+    color: black;
+    font-family: "Inter";
+    font-size: 1.5vmax;
+}
+.ct_img {
+    height:100%;
+    width:100%;
+    background-image: url('../images/items/bdf037c91f2e674c10f20c7fec685cf8.jpg');
+    background-size: cover;
+    border-radius: 0.4vmax;
 }
