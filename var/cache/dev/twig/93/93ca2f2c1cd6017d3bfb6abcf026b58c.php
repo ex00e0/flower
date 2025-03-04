@@ -66,15 +66,51 @@ class __TwigTemplate_3aa58cb4325c3dc54735784a28cd9d6c extends Template
         yield "    </head>
     <body>
         
-        <header>
-            <div></div>
+         <header class=\"header_all\">
+            <div class=\"nav_row\">
+                <div class=\"logo r1 c1\">FLOWER</div>
+                <nav class=\"nav_main r1 c3\">
+                    <a href=\"index.html\">Главная</a>
+                    <a href=\"catalog.html\">Каталог</a>
+                    <a href=\"catalog.html\">О нас</a>
+                   
+                    ";
+        // line 25
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
+            // line 26
+            yield "                         <a href=\"delivery.html\">Заказы</a> 
+                         <a href=\"login.html\"><img src=\"";
+            // line 27
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/shopping-cart (1).png"), "html", null, true);
+            yield "\" ></a>
+                    ";
+        } else {
+            // line 29
+            yield "                        <a href=\"catalog.html\">Контакты</a>
+                        <a href=\"login.html\"><img src=\"";
+            // line 30
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter (1).png"), "html", null, true);
+            yield "\" ></a>
+                    ";
+        }
+        // line 32
+        yield "
+                </nav>
+            </div>
         </header>
        
         ";
-        // line 21
+        // line 37
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 22
-        yield "    </body>
+        // line 38
+        yield "        
+        <script>
+        if (document.body.scrollHeight < document.documentElement.clientHeight) {
+            let diff = document.documentElement.clientHeight - document.body.scrollHeight;
+            document.getElementById('empty_px').style.height = `\${diff}px`;
+        }
+        </script>
+    </body>
 </html>";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -137,7 +173,7 @@ class __TwigTemplate_3aa58cb4325c3dc54735784a28cd9d6c extends Template
         yield from [];
     }
 
-    // line 21
+    // line 37
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -170,9 +206,17 @@ class __TwigTemplate_3aa58cb4325c3dc54735784a28cd9d6c extends Template
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo(): array
     {
-        return array (  141 => 21,  130 => 13,  117 => 12,  102 => 8,  89 => 7,  77 => 22,  75 => 21,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
+        return array (  177 => 37,  166 => 13,  153 => 12,  138 => 8,  125 => 7,  106 => 38,  104 => 37,  97 => 32,  92 => 30,  89 => 29,  84 => 27,  81 => 26,  79 => 25,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -193,11 +237,34 @@ class __TwigTemplate_3aa58cb4325c3dc54735784a28cd9d6c extends Template
     </head>
     <body>
         
-        <header>
-            <div></div>
+         <header class=\"header_all\">
+            <div class=\"nav_row\">
+                <div class=\"logo r1 c1\">FLOWER</div>
+                <nav class=\"nav_main r1 c3\">
+                    <a href=\"index.html\">Главная</a>
+                    <a href=\"catalog.html\">Каталог</a>
+                    <a href=\"catalog.html\">О нас</a>
+                   
+                    {% if is_granted('IS_AUTHENTICATED_FULLY')%}
+                         <a href=\"delivery.html\">Заказы</a> 
+                         <a href=\"login.html\"><img src=\"{{ asset('images/shopping-cart (1).png') }}\" ></a>
+                    {% else %}
+                        <a href=\"catalog.html\">Контакты</a>
+                        <a href=\"login.html\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
+                    {% endif %}
+
+                </nav>
+            </div>
         </header>
        
         {% block body %}{% endblock %}
+        
+        <script>
+        if (document.body.scrollHeight < document.documentElement.clientHeight) {
+            let diff = document.documentElement.clientHeight - document.body.scrollHeight;
+            document.getElementById('empty_px').style.height = `\${diff}px`;
+        }
+        </script>
     </body>
 </html>", "base.html.twig", "C:\\OSPanel\\domains\\flower\\templates\\base.html.twig");
     }

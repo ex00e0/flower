@@ -14,10 +14,33 @@
     </head>
     <body>
         
-        <header>
-            <div></div>
+         <header class="header_all">
+            <div class="nav_row">
+                <div class="logo r1 c1">FLOWER</div>
+                <nav class="nav_main r1 c3">
+                    <a href="index.html">Главная</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="catalog.html">О нас</a>
+                   
+                    {% if is_granted('IS_AUTHENTICATED_FULLY')%}
+                         <a href="delivery.html">Заказы</a> 
+                         <a href="login.html"><img src="{{ asset('images/shopping-cart (1).png') }}" ></a>
+                    {% else %}
+                        <a href="catalog.html">Контакты</a>
+                        <a href="login.html"><img src="{{ asset('images/enter (1).png') }}" ></a>
+                    {% endif %}
+
+                </nav>
+            </div>
         </header>
        
         {% block body %}{% endblock %}
+        
+        <script>
+        if (document.body.scrollHeight < document.documentElement.clientHeight) {
+            let diff = document.documentElement.clientHeight - document.body.scrollHeight;
+            document.getElementById('empty_px').style.height = `${diff}px`;
+        }
+        </script>
     </body>
 </html>

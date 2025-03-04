@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostsController!{% endblock %}
+
+{% block body %}
+<main class="all_main">
+<div class="big_void"></div>
+<div class="center_headline"><div>АВТОРИЗАЦИЯ</div></div>
+<div class="big_void"></div>
+<form action="" method="post">
+    <label>Электронная почта</label>
+    <input type="email" name="login">
+    <label>Пароль</label>
+    <input type="password" name="password">
+    <div class="small_void"></div>
+    <input type="submit" value="отправить">
+    <a class="no_acc" href="{{ path('app_reg') }}">Нет аккаунта? Зарегистрируйтесь</a>
+</form>
+
+<div id="empty_px"></div>
+</main>
+{% endblock %}

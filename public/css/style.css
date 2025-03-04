@@ -246,13 +246,25 @@ footer {
     height:3vh;
 }
 
+.header_all {
+
+    height: 6vmax;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    color: black;
+    
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/7f3b8479f54976a59151a51d9ee1f99d.jpg);
+    background-size: cover; */
+   
+}
 .header_main {
     position: relative;
-
     height: 67.5vmax;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 9% 1fr;
+    color:white;
     /* background-image: url(../images/7f3b8479f54976a59151a51d9ee1f99d.jpg);
     background-size: cover; */
    
@@ -298,12 +310,16 @@ footer {
     display: flex;
     justify-content: space-between;
     font-family: "Inter";
-    color:white;
+    /* color:white; */
     font-size: 1.4vmax;
     align-items: center;
 }
+.nav_main a {
+    display: grid;
+}
 .nav_main img {
     width: 2vmax;
+    align-self: center;
 }
 a {
     color:inherit;
@@ -311,7 +327,7 @@ a {
 }
 .logo {
     font-family: "Raleway";
-    color:white;
+    /* color:white; */
     justify-self: center;
     font-size: 2.5vmax;
 }
@@ -358,6 +374,10 @@ a {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), url('../images/nn.jpg');
     background-size: cover;
 }
+.all_main {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('../images/d8af6d3a4baf33695202c8e283ac9707.jpg');
+    background-size: 50vmax;
+}
 .ct_1 {
     font-family: "Raleway";
     color:black;
@@ -400,4 +420,63 @@ a {
     background-image: url('../images/items/bdf037c91f2e674c10f20c7fec685cf8.jpg');
     background-size: cover;
     border-radius: 0.4vmax;
+}
+form {
+    display: grid;
+    row-gap: 1vmax;
+}
+input[type='text'], input[type='email'], input[type='password'] {
+    outline: none;
+    font-family: "Inter";
+    color:black;
+    font-size: 1.3vmax;
+    padding-left: 1%;
+    width: 50%;
+    justify-self: center;
+    border-radius: 0.4vmax;
+    border: 0.15vmax solid black;
+    height: 3vmax;
+    /* background: transparent; */
+}
+label {
+    font-family: "Inter";
+    color:black;
+    width: 50%;
+    font-size: 1.3vmax;
+    justify-self: center;
+}
+input[type='submit'] {
+    font-family: "Ph R";
+    color:black;
+    font-size: 1.5vmax;
+    width: 13%;
+    border-radius: 0.4vmax;
+    border: 0.15vmax solid black;
+    height: 3vmax;
+    justify-self: center;
+    background: transparent;
+}
+.small_void {
+    height:0.1vmax;
+}
+.big_void {
+    height:2vmax;
+}
+.center_headline {
+    font-family: "Raleway";
+    color:black;
+    font-size: 3.5vmax;
+    font-weight: bold;
+    align-items: center;
+    display: grid;
+    justify-self: center;
+}
+.no_acc {
+    font-family: "Inter";
+    color:black;
+    width: 50%;
+    font-size: 1.1vmax;
+    justify-self: center;
+    text-align: center;
+    text-decoration: underline;
 }

@@ -16,6 +16,9 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/posts' => [[['_route' => 'app_posts', '_controller' => 'App\\Controller\\PostsController::posts'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'app_index', '_controller' => 'App\\Controller\\PostsController::index'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\PostsController::login'], null, null, null, false, false, null]],
+        '/reg' => [[['_route' => 'app_reg', '_controller' => 'App\\Controller\\PostsController::reg'], null, null, null, false, false, null]],
+        '/reg_db' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\PostsController::register'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

@@ -19,6 +19,12 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     'app_posts' => [[], ['_controller' => 'App\\Controller\\PostsController::posts'], [], [['text', '/posts']], [], [], []],
     'app_index' => [[], ['_controller' => 'App\\Controller\\PostsController::index'], [], [['text', '/']], [], [], []],
+    'app_login' => [[], ['_controller' => 'App\\Controller\\PostsController::login'], [], [['text', '/login']], [], [], []],
+    'app_reg' => [[], ['_controller' => 'App\\Controller\\PostsController::reg'], [], [['text', '/reg']], [], [], []],
+    'app_register' => [[], ['_controller' => 'App\\Controller\\PostsController::register'], [], [['text', '/reg_db']], [], [], []],
     'App\Controller\PostsController::posts' => [[], ['_controller' => 'App\\Controller\\PostsController::posts'], [], [['text', '/posts']], [], [], []],
     'App\Controller\PostsController::index' => [[], ['_controller' => 'App\\Controller\\PostsController::index'], [], [['text', '/']], [], [], []],
+    'App\Controller\PostsController::login' => [[], ['_controller' => 'App\\Controller\\PostsController::login'], [], [['text', '/login']], [], [], []],
+    'App\Controller\PostsController::reg' => [[], ['_controller' => 'App\\Controller\\PostsController::reg'], [], [['text', '/reg']], [], [], []],
+    'App\Controller\PostsController::register' => [[], ['_controller' => 'App\\Controller\\PostsController::register'], [], [['text', '/reg_db']], [], [], []],
 ];

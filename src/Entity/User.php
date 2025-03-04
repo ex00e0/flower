@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -19,7 +21,7 @@ class User
     #[ORM\OneToMany(targetEntity: Cart::class, mappedBy: "user")]
     private $carts;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $login = null;
 
     #[ORM\Column(length: 255)]
@@ -27,6 +29,38 @@ class User
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $role = 'ROLE_USER';
+
+    public function getRoles(): array
+{
+    return [$this->role ?? 'ROLE_USER'];
+}
+
+public function eraseCredentials(): void
+{
+    // Если у вас есть временные данные (например, plain password), очищайте их здесь
+}
+
+public function getUserIdentifier(): string
+{
+    return $this->login; 
+}
+
+
+
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {

@@ -114,6 +114,9 @@ class __TwigTemplate_9e20e6f453a899c74d672ec141399d51 extends Template
                 </div>
             </div>
         </section>
+        <section>
+            
+        </section>
     </main>
 
     </body>
@@ -201,7 +204,7 @@ class __TwigTemplate_9e20e6f453a899c74d672ec141399d51 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  173 => 13,  160 => 12,  145 => 8,  132 => 7,  96 => 32,  91 => 30,  88 => 29,  83 => 27,  80 => 26,  78 => 25,  65 => 14,  63 => 12,  60 => 11,  58 => 7,  50 => 1,);
+        return array (  176 => 13,  163 => 12,  148 => 8,  135 => 7,  96 => 32,  91 => 30,  88 => 29,  83 => 27,  80 => 26,  78 => 25,  65 => 14,  63 => 12,  60 => 11,  58 => 7,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -257,6 +260,9 @@ class __TwigTemplate_9e20e6f453a899c74d672ec141399d51 extends Template
                     <div>3200 р.</div>
                 </div>
             </div>
+        </section>
+        <section>
+            
         </section>
     </main>
 
