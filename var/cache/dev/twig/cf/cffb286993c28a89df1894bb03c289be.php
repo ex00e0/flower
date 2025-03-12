@@ -134,10 +134,10 @@ class __TwigTemplate_4c84a660c88c44bb23d961ec204f9204 extends Template
         // line 25
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 25, $this->source); })()), "login", [], "any", false, false, false, 25), 'widget', ["attr" => ["type" => "email"]]);
         yield "
-        ";
+        <div class=\"error_error\">";
         // line 26
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 26, $this->source); })()), "login", [], "any", false, false, false, 26), 'errors');
-        yield "
+        yield "</div>
 
         ";
         // line 29
@@ -146,10 +146,10 @@ class __TwigTemplate_4c84a660c88c44bb23d961ec204f9204 extends Template
         // line 30
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 30, $this->source); })()), "password", [], "any", false, false, false, 30), 'widget', ["attr" => ["type" => "password"]]);
         yield "
-        ";
+        <div class=\"error_error\">";
         // line 31
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 31, $this->source); })()), "password", [], "any", false, false, false, 31), 'errors');
-        yield "
+        yield "</div>
 
         ";
         // line 34
@@ -224,12 +224,12 @@ class __TwigTemplate_4c84a660c88c44bb23d961ec204f9204 extends Template
         {# Поле email (логина) #}
         <label for=\"login\">Электронная почта</label>
         {{ form_widget(form.login, {'attr': {'type': 'email'}}) }}
-        {{ form_errors(form.login) }}
+        <div class=\"error_error\">{{ form_errors(form.login) }}</div>
 
         {# Поле пароля #}
         <label for=\"password\">Пароль</label>
         {{ form_widget(form.password, {'attr': {'type': 'password'}}) }}
-        {{ form_errors(form.password) }}
+        <div class=\"error_error\">{{ form_errors(form.password) }}</div>
 
         {# Кнопка отправки #}
         <input type=\"submit\" value=\"отправить\">

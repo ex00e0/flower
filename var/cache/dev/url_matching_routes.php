@@ -19,6 +19,8 @@ return [
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\PostsController::login'], null, null, null, false, false, null]],
         '/reg' => [[['_route' => 'app_reg', '_controller' => 'App\\Controller\\PostsController::reg'], null, null, null, false, false, null]],
         '/reg_db' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\PostsController::register'], null, null, null, false, false, null]],
+        '/login_db' => [[['_route' => 'login_db', '_controller' => 'App\\Controller\\PostsController::login_db'], null, null, null, false, false, null]],
+        '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\PostsController::logout'], null, ['GET' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

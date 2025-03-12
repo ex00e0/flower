@@ -25,7 +25,7 @@ security:
                 path: /
 
             logout:
-                path: app_logout
+                path: logout
                 target: app_index
 
     access_control:

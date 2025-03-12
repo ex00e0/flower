@@ -82,17 +82,25 @@ class __TwigTemplate_e20d18dce56381759fbd19b14b80adfd extends Template
             // line 27
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/shopping-cart (1).png"), "html", null, true);
             yield "\" ></a>
+                         <a href=\"";
+            // line 28
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+            yield "\"><img src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter.png"), "html", null, true);
+            yield "\" ></a>
                     ";
         } else {
-            // line 29
-            yield "                        <a href=\"catalog.html\">Контакты</a>
-                        <a href=\"login.html\"><img src=\"";
             // line 30
+            yield "                        <a href=\"catalog.html\">Контакты</a>
+                        <a href=\"";
+            // line 31
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+            yield "\"><img src=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter.png"), "html", null, true);
             yield "\" ></a>
                     ";
         }
-        // line 32
+        // line 33
         yield "
                 </nav>
             </div>
@@ -204,7 +212,7 @@ class __TwigTemplate_e20d18dce56381759fbd19b14b80adfd extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  176 => 13,  163 => 12,  148 => 8,  135 => 7,  96 => 32,  91 => 30,  88 => 29,  83 => 27,  80 => 26,  78 => 25,  65 => 14,  63 => 12,  60 => 11,  58 => 7,  50 => 1,);
+        return array (  184 => 13,  171 => 12,  156 => 8,  143 => 7,  104 => 33,  97 => 31,  94 => 30,  87 => 28,  83 => 27,  80 => 26,  78 => 25,  65 => 14,  63 => 12,  60 => 11,  58 => 7,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -236,9 +244,10 @@ class __TwigTemplate_e20d18dce56381759fbd19b14b80adfd extends Template
                     {% if is_granted('IS_AUTHENTICATED_FULLY')%}
                          <a href=\"delivery.html\">Заказы</a> 
                          <a href=\"login.html\"><img src=\"{{ asset('images/shopping-cart (1).png') }}\" ></a>
+                         <a href=\"{{path('logout')}}\"><img src=\"{{ asset('images/enter.png') }}\" ></a>
                     {% else %}
                         <a href=\"catalog.html\">Контакты</a>
-                        <a href=\"login.html\"><img src=\"{{ asset('images/enter.png') }}\" ></a>
+                        <a href=\"{{path('app_login')}}\"><img src=\"{{ asset('images/enter.png') }}\" ></a>
                     {% endif %}
 
                 </nav>

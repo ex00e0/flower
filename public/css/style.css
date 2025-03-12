@@ -480,3 +480,14 @@ input[type='submit'] {
     text-align: center;
     text-decoration: underline;
 }
+.error_error {
+    font-family: "Inter";
+    color:black;
+    width: 50%;
+    font-size: 1.1vmax;
+    justify-self: center;
+}
+.error_error li {
+    list-style: none;
+    color: red;
+}

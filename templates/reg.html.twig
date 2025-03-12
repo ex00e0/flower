@@ -23,12 +23,12 @@
         {# Поле email (логина) #}
         <label for="login">Электронная почта</label>
         {{ form_widget(form.login, {'attr': {'type': 'email'}}) }}
-        {{ form_errors(form.login) }}
+        <div class="error_error">{{ form_errors(form.login) }}</div>
 
         {# Поле пароля #}
         <label for="password">Пароль</label>
         {{ form_widget(form.password, {'attr': {'type': 'password'}}) }}
-        {{ form_errors(form.password) }}
+        <div class="error_error">{{ form_errors(form.password) }}</div>
 
         {# Кнопка отправки #}
         <input type="submit" value="отправить">

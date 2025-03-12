@@ -81,28 +81,34 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
             yield "                         <a href=\"delivery.html\">Заказы</a> 
                          <a href=\"login.html\"><img src=\"";
             // line 27
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/shopping-cart (1).png"), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/shopping-cart (2).png"), "html", null, true);
+            yield "\" ></a>
+                         <a href=\"";
+            // line 28
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+            yield "\"><img src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter (1).png"), "html", null, true);
             yield "\" ></a>
                     ";
         } else {
-            // line 29
+            // line 30
             yield "                        <a href=\"catalog.html\">Контакты</a>
                         <a href=\"login.html\"><img src=\"";
-            // line 30
+            // line 31
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter (1).png"), "html", null, true);
             yield "\" ></a>
                     ";
         }
-        // line 32
+        // line 33
         yield "
                 </nav>
             </div>
         </header>
        
         ";
-        // line 37
-        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
         // line 38
+        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
+        // line 39
         yield "        
         <script>
         if (document.body.scrollHeight < document.documentElement.clientHeight) {
@@ -173,7 +179,7 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
         yield from [];
     }
 
-    // line 37
+    // line 38
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -216,7 +222,7 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  177 => 37,  166 => 13,  153 => 12,  138 => 8,  125 => 7,  106 => 38,  104 => 37,  97 => 32,  92 => 30,  89 => 29,  84 => 27,  81 => 26,  79 => 25,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
+        return array (  183 => 38,  172 => 13,  159 => 12,  144 => 8,  131 => 7,  112 => 39,  110 => 38,  103 => 33,  98 => 31,  95 => 30,  88 => 28,  84 => 27,  81 => 26,  79 => 25,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -247,7 +253,8 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
                    
                     {% if is_granted('IS_AUTHENTICATED_FULLY')%}
                          <a href=\"delivery.html\">Заказы</a> 
-                         <a href=\"login.html\"><img src=\"{{ asset('images/shopping-cart (1).png') }}\" ></a>
+                         <a href=\"login.html\"><img src=\"{{ asset('images/shopping-cart (2).png') }}\" ></a>
+                         <a href=\"{{path('logout')}}\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
                     {% else %}
                         <a href=\"catalog.html\">Контакты</a>
                         <a href=\"login.html\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>

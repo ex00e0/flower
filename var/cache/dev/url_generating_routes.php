@@ -22,9 +22,13 @@ return [
     'app_login' => [[], ['_controller' => 'App\\Controller\\PostsController::login'], [], [['text', '/login']], [], [], []],
     'app_reg' => [[], ['_controller' => 'App\\Controller\\PostsController::reg'], [], [['text', '/reg']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\PostsController::register'], [], [['text', '/reg_db']], [], [], []],
+    'login_db' => [[], ['_controller' => 'App\\Controller\\PostsController::login_db'], [], [['text', '/login_db']], [], [], []],
+    'logout' => [[], ['_controller' => 'App\\Controller\\PostsController::logout'], [], [['text', '/logout']], [], [], []],
     'App\Controller\PostsController::posts' => [[], ['_controller' => 'App\\Controller\\PostsController::posts'], [], [['text', '/posts']], [], [], []],
     'App\Controller\PostsController::index' => [[], ['_controller' => 'App\\Controller\\PostsController::index'], [], [['text', '/']], [], [], []],
     'App\Controller\PostsController::login' => [[], ['_controller' => 'App\\Controller\\PostsController::login'], [], [['text', '/login']], [], [], []],
     'App\Controller\PostsController::reg' => [[], ['_controller' => 'App\\Controller\\PostsController::reg'], [], [['text', '/reg']], [], [], []],
     'App\Controller\PostsController::register' => [[], ['_controller' => 'App\\Controller\\PostsController::register'], [], [['text', '/reg_db']], [], [], []],
+    'App\Controller\PostsController::login_db' => [[], ['_controller' => 'App\\Controller\\PostsController::login_db'], [], [['text', '/login_db']], [], [], []],
+    'App\Controller\PostsController::logout' => [[], ['_controller' => 'App\\Controller\\PostsController::logout'], [], [['text', '/logout']], [], [], []],
 ];
