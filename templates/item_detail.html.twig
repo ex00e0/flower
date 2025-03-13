@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Каталог{% endblock %}
+
+{% block body %}
+
+
+{% for message in app.flashes('success') %}
+    <script> alert('{{ message }}')</script>
+{% endfor %}
+
+<main>
+<div class="big_void"></div>
+        <div class="catalogue_small">
+            <div class="r1 c2">{{ item.getName() }}<div></div></div>
+        </div>
+        <div class="big_void"></div>
+        <section class="one_item">
+            <div class="ct_img c2 r1-all"><img src="{{ asset('images/items/' ~ item.getImage()) }}" alt="{{ item.getName() }}" class="image_one_item"></div>
+             <div class="one_desc c4 r1">{{ item.getDescription() }}</div>
+             <div class="one_price c4 r2">{{ item.getPrice() }} ₽</div>
+
+             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% set in_cart = false %}
+                {% set quantity = 0 %}
+
+                {% for cart_item in cartItems %}
+                    {% if cart_item.getItem.id() == item.getId() %}
+                        {% set in_cart = true %}
+                        {% set quantity = cart_item.getAddon() %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if in_cart %}
+                    <div class="r3 c4 one_button_pm">
+                        <a href="{{ path('cart_remove', {'id': item.getId()}) }}">−</a>
+                        <div>{{ quantity }}</div>
+                        <a href="{{ path('cart_add', {'id': item.getId()}) }}">+</a>
+                    </div>
+                {% else %}
+                    <div class="r3 c4 one_button">
+                        <a href="{{ path('cart_add', {'id': item.getId()}) }}" >добавить в корзину</a>
+                    </div>
+                {% endif %}
+                {% else %}
+                    <div class="r3 c4 one_price">Для добавления в корзину авторизуйтесь</div>
+                {% endif %}
+
+        </section>
+       
+    </main>
+<div class="big_void"></div>
+
+       
+    
+{% endblock %}

@@ -27,23 +27,36 @@ class Order
     #[ORM\Column]
     private ?int $sum = null;
 
+    #[ORM\Column(type: Types::JSON)]
+    private ?array $compound = [];
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserId(): ?int
+    public function getUserId(): ?User
     {
         return $this->user_id;
     }
 
-    public function setUserId(int $user_id): static
+    public function setUserId(?User $user): static
     {
-        $this->user_id = $user_id;
-
+        $this->user_id = $user;
         return $this;
     }
 
+    public function getCompound(): ?array
+    {
+        return $this->compound;
+    }
+
+    public function setCompound(array $compound): static
+    {
+        $this->compound = $compound;
+        return $this;
+    }
+    
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;

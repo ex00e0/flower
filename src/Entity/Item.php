@@ -20,6 +20,9 @@ class Item
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[ORM\Column(length: 2000)]
+    private ?string $description = null;
+
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
@@ -54,6 +57,18 @@ class Item
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

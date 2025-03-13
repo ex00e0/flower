@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Каталог{% endblock %}
+
+{% block body %}
+
+
+
+
+<main>
+<div class="big_void"></div>
+        <div class="catalogue_small">
+            <div class="r1 c2"><div>КАТАЛОГ</div></div>
+        </div>
+        <div class="big_void"></div>
+         {% set counter = 1 %}
+         {% for item in catalogue %}
+
+            {% if counter == 1 or counter%3 == 1 %}
+               <section class="catalogue">
+                <div class="r1 c2 cat_3">
+
+            {%endif%}
+           
+                <a href="{{ path('item_detail', {'id': item.getId()}) }}">
+                    <div class="ct_img"><img src="{{ asset('images/items/' ~ item.getImage()) }}" alt="{{ item.getName() }}" class="image_cat"></div>
+                    <div>{{ item.getName() }}</div>
+                    <div>{{ item.getPrice() }} ₽</div>
+                </a>
+             {% if counter%3 == 2 or counter%3 == 1 %}
+               
+               <div></div>
+
+            {%endif%}
+            {% if counter%3 == 0 %}
+                </div>
+            </section>
+
+                {%endif%}
+                 
+                 {% set counter = counter + 1 %}
+            
+                    
+                {% endfor %}
+       
+    </main>
+
+
+       
+    
+{% endblock %}

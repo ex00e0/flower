@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Моя корзина{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+    <script> alert('{{ message }}')</script>
+{% endfor %}
+   <main>
+    <div class="big_void"></div>
+        <div class="catalogue_small">
+            <div class="r1 c2"><div>ВАША КОРЗИНА</div></div>
+        </div>
+        <div class="big_void"></div>
+       
+    </main>
+    {% if cartItems is empty %}
+        <div class="empty_cart">Корзина пуста</div>
+    {% else %}
+        <div class="th_cart">
+            <div></div>
+            <div>Фото</div>
+            <div>Название</div>
+            <div class="js_cent">Цена</div>
+            <div class="js_cent">Количество</div>
+            <div class="js_cent">Итого</div>
+        </div>
+        {% set sum = 0 %}
+         {% for cart in cartItems %}
+                    {% set item = cart.getItem() %}
+                     <div class="tr_cart">
+                        <div></div>
+                        <div class="cart_img"><img src="{{ asset('images/items/' ~ item.getImage()) }}" alt="{{ item.getName() }}" class="cart_image"></div>
+                        <div>{{ item.getName() }}</div>
+                        <div class="js_cent">{{ item.getPrice() }} ₽</div>
+                       <div class="cart_button_pm">
+                        <a href="{{ path('cart_remove', {'id': item.getId()}) }}">−</a>
+                        <div>{{ cart.getAddon }}</div>
+                        <a href="{{ path('cart_add', {'id': item.getId()}) }}">+</a>
+                        </div>
+                        <div class="js_cent">{{ item.getPrice() * cart.getAddon }} ₽</div>
+                        {% set sum = sum + item.getPrice() * cart.getAddon %}
+                    </div>
+                {% endfor %}
+                  <div class="th_cart">
+        </div>
+    <div class="th_cart">
+            <div class="c2-all r1 as_cent">Сумма: {{sum}} ₽</div>
+            <div class="c6 r1 one_button_cart">
+                        <a href="{{ path('make_order', {'sum': sum}) }}" >заказать</a>
+                    </div>
+        </div>
+    {% endif %}
+   
+{% endblock %}

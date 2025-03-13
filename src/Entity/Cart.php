@@ -22,46 +22,47 @@ class Cart
     private ?Item $item_id = null;
 
     #[ORM\Column(nullable: true)]
-    private ?array $addon = null;
+    private ?int $addon = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserId(): ?int
+    public function getUserId(): ?User
     {
         return $this->user_id;
     }
 
-    public function setUserId(int $user_id): static
+    public function setUserId(?User $user): static
     {
-        $this->user_id = $user_id;
-
+        $this->user_id = $user;
         return $this;
     }
 
-    public function getItemId(): ?int
-    {
-        return $this->item_id;
-    }
-
-    public function setItemId(int $item_id): static
-    {
-        $this->item_id = $item_id;
-
-        return $this;
-    }
-
-    public function getAddon(): ?array
+    public function getAddon(): ?int
     {
         return $this->addon;
     }
 
-    public function setAddon(?array $addon): static
+    public function setAddon(int $addon): static
     {
         $this->addon = $addon;
 
         return $this;
     }
+
+    public function getItem(): ?Item
+    {
+        return $this->item_id;
+    }
+
+    public function setItemId(?Item $item): static
+    {
+        $this->item_id = $item;
+
+        return $this;
+    }
+
+   
 }

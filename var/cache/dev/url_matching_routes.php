@@ -16,6 +16,8 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/posts' => [[['_route' => 'app_posts', '_controller' => 'App\\Controller\\PostsController::posts'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'app_index', '_controller' => 'App\\Controller\\PostsController::index'], null, null, null, false, false, null]],
+        '/cart' => [[['_route' => 'cart', '_controller' => 'App\\Controller\\PostsController::cart'], null, null, null, false, false, null]],
+        '/catalogue' => [[['_route' => 'catalogue', '_controller' => 'App\\Controller\\PostsController::catalogue'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\PostsController::login'], null, null, null, false, false, null]],
         '/reg' => [[['_route' => 'app_reg', '_controller' => 'App\\Controller\\PostsController::reg'], null, null, null, false, false, null]],
         '/reg_db' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\PostsController::register'], null, null, null, false, false, null]],
@@ -42,6 +44,12 @@ return [
                         .')'
                     .')'
                 .')'
+                .'|/make_order/([^/]++)(*:222)'
+                .'|/item/([^/]++)(*:244)'
+                .'|/cart/(?'
+                    .'|add/([^/]++)(*:273)'
+                    .'|remove/([^/]++)(*:296)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -52,8 +60,12 @@ return [
         148 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
         168 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         181 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        191 => [
-            [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
+        191 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
+        222 => [[['_route' => 'make_order', '_controller' => 'App\\Controller\\PostsController::makeOrder'], ['sum'], null, null, false, true, null]],
+        244 => [[['_route' => 'item_detail', '_controller' => 'App\\Controller\\PostsController::itemDetail'], ['id'], null, null, false, true, null]],
+        273 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\PostsController::addToCart'], ['id'], null, null, false, true, null]],
+        296 => [
+            [['_route' => 'cart_remove', '_controller' => 'App\\Controller\\PostsController::removeFromCart'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

@@ -404,7 +404,7 @@ a {
     grid-template-rows: 1fr 1% 1fr;
     grid-template-columns: 1fr 10% 1fr;
 }
-.ct_3 > div {
+.ct_3 > a {
     display: grid;
     grid-template-rows: 85% 1fr 1fr;
     grid-template-columns: 100%;
@@ -417,9 +417,40 @@ a {
 .ct_img {
     height:100%;
     width:100%;
-    background-image: url('../images/items/bdf037c91f2e674c10f20c7fec685cf8.jpg');
-    background-size: cover;
+    /* background-image: url('../images/items/bdf037c91f2e674c10f20c7fec685cf8.jpg');
+    background-size: cover; */
     border-radius: 0.4vmax;
+}
+.ct_img_index {
+    height:25vmax;
+    width:100%;
+    /* background-image: url('../images/items/bdf037c91f2e674c10f20c7fec685cf8.jpg');
+    background-size: cover; */
+    border-radius: 0.4vmax;
+}
+.image_cat {
+    width:100%;
+    height:24vmax;
+}
+.cart_image {
+    width:7vmax;
+    height:7vmax;
+    align-self: center;
+}
+.cart_img {
+    display: grid;
+}
+.image_index_size {
+    width:25vmax; 
+    height:25vmax;
+}
+.image_index {
+    width:100%;
+    height:25vmax;
+}
+.image_one_item {
+    width:100%;
+    height:35vmax;
 }
 form {
     display: grid;
@@ -490,4 +521,144 @@ input[type='submit'] {
 .error_error li {
     list-style: none;
     color: red;
+}
+
+.catalogue {
+    height: 30vmax;
+    display: grid;
+    grid-template-rows: 1fr 5%;
+    grid-template-columns: 9.5% 1fr 9.5% ;
+}
+.catalogue_small {
+    height: 6vmax;
+    display: grid;
+    grid-template-rows: 1fr 5%;
+    grid-template-columns: 9.5% 1fr 9.5% ;
+    font-family: "Raleway";
+    color:black;
+    font-size: 4vmax;
+    font-weight: bold;
+    align-items: center;
+    justify-items: center;
+}
+.cat_3 {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 5% 1fr 5% 1fr ;
+}
+.cat_3 > a {
+    display: grid;
+    grid-template-rows: 85% 1fr 1fr;
+    grid-template-columns: 100%;
+    justify-items: center;
+    align-items: center;
+    color: black;
+    font-family: "Inter";
+    font-size: 1.5vmax;
+}
+.one_item { 
+    height: 35vmax;
+    display: grid;
+    grid-template-columns:  9.5% 38% 5% 1fr 9.5%;
+    grid-template-rows: 65% 10% 1fr;
+}
+.one_desc {
+    font-family: "Inter";
+    color:black;
+    font-size: 1.3vmax;
+    line-height: 2vmax;
+}
+.one_price {
+    font-family: "Inter";
+    color:black;
+    font-size: 1.5vmax;
+    line-height: 2vmax;
+    align-self: center;
+    justify-self: center;
+}
+.one_button {
+    display: grid;
+    font-family: "Ph R";
+    color:black;
+    font-size: 1.8vmax;
+    align-items: center;
+    justify-items: center;
+    justify-self: center;
+    width: 60%;
+    border-radius: 0.4vmax;
+    border: 0.15vmax solid black;
+    height: 35%;
+    align-self: center;
+}
+.one_button_cart {
+    display: grid;
+    font-family: "Ph R";
+    color:black;
+    font-size: 1.8vmax;
+    align-items: center;
+    justify-items: center;
+    justify-self: end;
+    width: 120%;
+    border-radius: 0.4vmax;
+    border: 0.15vmax solid black;
+    height: 100%;
+    align-self: center;
+}
+.one_button_pm {
+    display: grid;
+    grid-template-columns: 1fr 5% 1fr;
+    font-family: "Ph R";
+    color:black;
+    font-size: 1.8vmax;
+    align-items: center;
+    justify-items: center;
+    justify-self: center;
+    width: 60%;
+    border-radius: 0.4vmax;
+    border: 0.15vmax solid black;
+    height: 35%;
+    align-self: center;
+}
+.cart_button_pm {
+    display: grid;
+    grid-template-columns: 1fr 5% 1fr;
+    align-items: center;
+    justify-items: center;
+    justify-self: center;
+    width: 60%;
+    height: 35%;
+    align-self: center;
+}
+.empty_cart {
+    justify-self: center;
+    font-family: "Inter";
+    color:black;
+    font-size: 1.5vmax;
+    height:3vmax;
+}
+.th_cart {
+    height:3vmax;
+    display: grid;
+    grid-template-columns: 9.5% 8vmax 30% 12% 1fr 12% 9.5%;
+    grid-template-rows: 100%;
+    font-family: "Inter";
+    color:black;
+    font-size: 1.5vmax;
+}
+.tr_cart {
+    height:8vmax;
+    display: grid;
+    grid-template-columns: 9.5% 8vmax 30% 12% 1fr 12% 9.5%;
+    grid-template-rows: 100%;
+    font-family: "Inter";
+    color:black;
+    font-size: 1.3vmax;
+    align-items: center;
+
+}
+.js_cent {
+    justify-self:center;
+}
+.as_cent {
+    align-self:center;
 }
