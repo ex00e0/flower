@@ -63,6 +63,7 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
+    <parameter key="images_directory">C:\OSPanel\domains\flower/public/images/items</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -301,6 +302,9 @@
     <service id="App\Form\AuthType" class="App\Form\AuthType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\ItemType" class="App\Form\ItemType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -354,7 +358,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator..Q7DPPI"/>
+      <argument type="service" id=".service_locator..HNkgS7"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -951,6 +955,7 @@
       </argument>
       <argument type="collection">
         <argument>App\Form\AuthType</argument>
+        <argument>App\Form\ItemType</argument>
         <argument>App\Form\RegistrationType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -1743,7 +1748,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator..Q7DPPI"/>
+      <argument type="service" id=".service_locator..HNkgS7"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -2052,7 +2057,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.18OO7Xi"/>
+      <argument type="service" id=".service_locator.MUpYCBO"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -2685,6 +2690,11 @@
     <service id="data_collector.validator" class="Symfony\Component\Validator\DataCollector\ValidatorDataCollector">
       <tag name="data_collector" template="@WebProfiler/Collector/validator.html.twig" id="validator" priority="320"/>
       <argument type="service" id="debug.validator"/>
+    </service>
+    <service id="mime_types" class="Symfony\Component\Mime\MimeTypes">
+      <call method="setDefault">
+        <argument type="service" id="mime_types"/>
+      </call>
     </service>
     <service id="twig" class="Twig\Environment">
       <tag name="container.preload" class="Twig\Cache\FilesystemCache"/>
@@ -4861,6 +4871,8 @@
     <service id=".abstract.instanceof.App\Controller\PostsController" class="App\Controller\PostsController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AuthType" class="App\Form\AuthType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\AuthType" class="App\Form\AuthType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ItemType" class="App\Form\ItemType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ItemType" class="App\Form\ItemType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CartRepository" class="App\Repository\CartRepository" autowire="true" abstract="true"/>
@@ -5329,13 +5341,39 @@
         <argument key="userAuthenticator" type="service_closure" id="security.user_authenticator"/>
       </argument>
     </service>
-    <service id=".service_locator..Q7DPPI" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.LNwsF6h" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="slugger" type="service_closure" id="slugger"/>
+      </argument>
+    </service>
+    <service id=".service_locator.NuvaoC3" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="item" type="service_closure" id=".errored..service_locator.NuvaoC3.App\Entity\Item"/>
+        <argument key="slugger" type="service_closure" id="slugger"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jmuZpYG" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="item" type="service_closure" id=".errored..service_locator.jmuZpYG.App\Entity\Item"/>
+      </argument>
+    </service>
+    <service id=".service_locator..HNkgS7" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\PostsController::addToCart" type="service_closure" id=".service_locator.J2r0Nrg"/>
+        <argument key="App\Controller\PostsController::admin_items" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController::admin_orders" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController::cart" type="service_closure" id=".service_locator.J2r0Nrg"/>
         <argument key="App\Controller\PostsController::catalogue" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\PostsController::create" type="service_closure" id=".service_locator.LNwsF6h"/>
+        <argument key="App\Controller\PostsController::delete" type="service_closure" id=".service_locator.jmuZpYG"/>
+        <argument key="App\Controller\PostsController::edit" type="service_closure" id=".service_locator.NuvaoC3"/>
         <argument key="App\Controller\PostsController::index" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController::itemDetail" type="service_closure" id=".service_locator.u1f_Ssc"/>
         <argument key="App\Controller\PostsController::login_db" type="service_closure" id=".service_locator.sBSvV5M"/>
@@ -5349,9 +5387,13 @@
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Controller\PostsController:addToCart" type="service_closure" id=".service_locator.J2r0Nrg"/>
+        <argument key="App\Controller\PostsController:admin_items" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController:admin_orders" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController:cart" type="service_closure" id=".service_locator.J2r0Nrg"/>
         <argument key="App\Controller\PostsController:catalogue" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\PostsController:create" type="service_closure" id=".service_locator.LNwsF6h"/>
+        <argument key="App\Controller\PostsController:delete" type="service_closure" id=".service_locator.jmuZpYG"/>
+        <argument key="App\Controller\PostsController:edit" type="service_closure" id=".service_locator.NuvaoC3"/>
         <argument key="App\Controller\PostsController:index" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController:itemDetail" type="service_closure" id=".service_locator.u1f_Ssc"/>
         <argument key="App\Controller\PostsController:login_db" type="service_closure" id=".service_locator.sBSvV5M"/>
@@ -5441,10 +5483,11 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.18OO7Xi" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.MUpYCBO" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AuthType" type="service_closure" id="App\Form\AuthType"/>
+        <argument key="App\Form\ItemType" type="service_closure" id="App\Form\ItemType"/>
         <argument key="App\Form\RegistrationType" type="service_closure" id="App\Form\RegistrationType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
@@ -5877,6 +5920,12 @@
     </service>
     <service id=".errored..service_locator.u1f_Ssc.App\Entity\Item" class="App\Entity\Item">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.u1f_Ssc&quot;: it needs an instance of &quot;App\Entity\Item&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.NuvaoC3.App\Entity\Item" class="App\Entity\Item">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.NuvaoC3&quot;: it needs an instance of &quot;App\Entity\Item&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.jmuZpYG.App\Entity\Item" class="App\Entity\Item">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.jmuZpYG&quot;: it needs an instance of &quot;App\Entity\Item&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
@@ -6741,6 +6790,8 @@
     <service id="form.choice_list_factory" alias="form.choice_list_factory.cached"/>
     <service id="Symfony\Component\Validator\Validator\ValidatorInterface" alias="debug.validator"/>
     <service id="validator.mapping.class_metadata_factory" alias="debug.validator"/>
+    <service id="Symfony\Component\Mime\MimeTypesInterface" alias="mime_types"/>
+    <service id="Symfony\Component\Mime\MimeTypeGuesserInterface" alias="mime_types"/>
     <service id="Twig_Environment" alias="twig">
       <deprecated package="symfony/twig-bundle" version="6.3">The "%alias_id%" service alias is deprecated, use "Twig\Environment" or "twig" instead.</deprecated>
     </service>
@@ -6786,7 +6837,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator..Q7DPPI"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator..HNkgS7"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
@@ -6794,9 +6845,10 @@
     <service id=".service_locator.e9C_9eg" alias=".service_locator.J2r0Nrg"/>
     <service id=".service_locator.zYcT7Fe" alias=".service_locator.u1f_Ssc"/>
     <service id=".service_locator.XkSwnEJ" alias=".service_locator.sBSvV5M"/>
-    <service id=".service_locator.OnjoeMC" alias=".service_locator..Q7DPPI"/>
+    <service id=".service_locator.2UyQCR7" alias=".service_locator.NuvaoC3"/>
+    <service id=".service_locator.4ACm4mc" alias=".service_locator..HNkgS7"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.QU.Bqeu" alias=".service_locator.18OO7Xi"/>
+    <service id=".service_locator.zzm.f2S" alias=".service_locator.MUpYCBO"/>
     <service id=".service_locator.LMuqDDe" alias=".service_locator.VHsrTPK"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
     <service id="validator" alias="debug.validator"/>
@@ -6815,6 +6867,9 @@
     <service id=".service_locator.ZbiNKp0" alias=".service_locator.J2r0Nrg"/>
     <service id=".service_locator.ZdeFS52" alias=".service_locator.u1f_Ssc"/>
     <service id=".service_locator.Dpxpcgc" alias=".service_locator.sBSvV5M"/>
+    <service id=".service_locator.lUJI3Z8" alias=".service_locator.LNwsF6h"/>
+    <service id=".service_locator.lIjAMzU" alias=".service_locator.NuvaoC3"/>
+    <service id=".service_locator.Ru75xK2" alias=".service_locator.jmuZpYG"/>
     <service id=".service_locator.GDg2hr7" alias=".service_locator.O2p6Lk7"/>
     <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>
     <service id=".service_locator._kIAbz1" alias=".service_locator.TpoC7U9"/>

@@ -15,7 +15,10 @@ use App\Entity\Order;
 
 use App\Form\RegistrationType;
 use App\Form\AuthType;
+use App\Form\ItemType;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -419,6 +422,115 @@ public function updateOrderStatus(int $id, Request $request, EntityManagerInterf
 
     return new JsonResponse(['success' => true, 'message' => 'Статус заказа обновлён']);
 }
+
+#[Route('/admin_items', name: 'admin_items')]
+public function admin_items( EntityManagerInterface $entityManager): Response
+{
+    $items = $entityManager->getRepository(Item::class)->findAll();
+
+    return $this->render('admin_items.html.twig', [
+        'items' => $items,
+    ]);
+}
+
+
+
+
+#[Route('/create', name: 'item_create')]
+    public function create(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    {
+        $item = new Item();
+        $form = $this->createForm(ItemType::class, $item);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('imageFile')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'), // Директория хранения изображений (настраивается в services.yaml)
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash('error', 'Ошибка загрузки изображения.');
+                    return $this->redirectToRoute('item_create');
+                }
+
+                $item->setImage($newFilename);
+            }
+
+            $entityManager->persist($item);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Товар успешно добавлен!');
+            return $this->redirectToRoute('admin_items');
+        }
+
+        return $this->render('item_form.html.twig', [
+            'form' => $form->createView(),
+            'title' => 'Добавить товар',
+            'item' => $item,
+        ]);
+    }
+
+    #[Route('/edit/{id}', name: 'item_edit')]
+    public function edit(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger, Item $item): Response
+    {
+        $form = $this->createForm(ItemType::class, $item);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('imageFile')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash('error', 'Ошибка загрузки изображения.');
+                    return $this->redirectToRoute('item_edit', ['id' => $item->getId()]);
+                }
+
+                $item->setImage($newFilename);
+            }
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Товар успешно обновлен!');
+            return $this->redirectToRoute('admin_items');
+
+        }
+
+        return $this->render('item_form.html.twig', [
+            'form' => $form->createView(),
+            'title' => 'Редактировать товар',
+            'item' => $item,
+        ]);
+    }
+
+    #[Route('/delete/{id}', name: 'item_delete', methods: ['POST'])]
+    public function delete(Request $request, EntityManagerInterface $entityManager, Item $item): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $item->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($item);
+            $entityManager->flush();
+            $this->addFlash('success', 'Товар удален.');
+        }
+
+        return $this->redirectToRoute('item_list');
+    }
+
 }
 
 

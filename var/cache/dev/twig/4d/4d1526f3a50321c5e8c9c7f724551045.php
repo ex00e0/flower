@@ -78,10 +78,7 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
         // line 22
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("catalogue");
         yield "\">Каталог</a>
-                    <a href=\"";
-        // line 23
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_index");
-        yield "\">О нас</a>
+                    
                    
                     ";
         // line 25
@@ -90,11 +87,15 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
             yield "                        ";
             if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
                 // line 27
-                yield "                            <a href=\"";
+                yield "                         <a href=\"";
+                yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_items");
+                yield "\">Все товары</a> 
+                            <a href=\"";
+                // line 28
                 yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_orders");
                 yield "\">Все заказы</a> 
                          <a href=\"";
-                // line 28
+                // line 29
                 yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
                 yield "\"><img src=\"";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter (1).png"), "html", null, true);
@@ -102,31 +103,38 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
 
                         ";
             } else {
-                // line 31
-                yield "                         <a href=\"";
+                // line 32
+                yield "                        <a href=\"";
+                yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_index");
+                yield "\">О нас</a>
+                         <a href=\"";
+                // line 33
                 yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("orders");
                 yield "\">Заказы</a> 
                          <a href=\"";
-                // line 32
+                // line 34
                 yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart");
                 yield "\"><img src=\"";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/shopping-cart (2).png"), "html", null, true);
                 yield "\" ></a>
                          <a href=\"";
-                // line 33
+                // line 35
                 yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
                 yield "\"><img src=\"";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter (1).png"), "html", null, true);
                 yield "\" ></a>
                          ";
             }
-            // line 35
+            // line 37
             yield "                    ";
         } else {
-            // line 36
-            yield "                        <a href=\"catalog.html\">Контакты</a>
+            // line 38
+            yield "                        <a href=\"";
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_index");
+            yield "\">О нас</a>
+                        <a href=\"catalog.html\">Контакты</a>
                         <a href=\"";
-            // line 37
+            // line 40
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             yield "\"><img src=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter (1).png"), "html", null, true);
@@ -134,7 +142,7 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
                     
                     ";
         }
-        // line 40
+        // line 43
         yield "
 
                 </nav>
@@ -142,9 +150,9 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
         </header>
        
         ";
-        // line 46
+        // line 49
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 47
+        // line 50
         yield "        
         <script>
         if (document.body.scrollHeight < document.documentElement.clientHeight) {
@@ -215,7 +223,7 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
         yield from [];
     }
 
-    // line 46
+    // line 49
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -258,7 +266,7 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  219 => 46,  208 => 13,  195 => 12,  180 => 8,  167 => 7,  148 => 47,  146 => 46,  138 => 40,  130 => 37,  127 => 36,  124 => 35,  117 => 33,  111 => 32,  106 => 31,  98 => 28,  93 => 27,  90 => 26,  88 => 25,  83 => 23,  79 => 22,  75 => 21,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
+        return array (  227 => 49,  216 => 13,  203 => 12,  188 => 8,  175 => 7,  156 => 50,  154 => 49,  146 => 43,  138 => 40,  132 => 38,  129 => 37,  122 => 35,  116 => 34,  112 => 33,  107 => 32,  99 => 29,  95 => 28,  90 => 27,  87 => 26,  85 => 25,  79 => 22,  75 => 21,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -285,19 +293,22 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
                 <nav class=\"nav_main r1 c3\">
                     <a href=\"{{path('app_index')}}\">Главная</a>
                     <a href=\"{{path('catalogue')}}\">Каталог</a>
-                    <a href=\"{{path('app_index')}}\">О нас</a>
+                    
                    
                     {% if is_granted('IS_AUTHENTICATED_FULLY')%}
                         {% if is_granted('ROLE_ADMIN') %}
+                         <a href=\"{{ path('admin_items') }}\">Все товары</a> 
                             <a href=\"{{ path('admin_orders') }}\">Все заказы</a> 
                          <a href=\"{{path('logout')}}\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
 
                         {% else %}
+                        <a href=\"{{path('app_index')}}\">О нас</a>
                          <a href=\"{{path('orders')}}\">Заказы</a> 
                          <a href=\"{{path('cart')}}\"><img src=\"{{ asset('images/shopping-cart (2).png') }}\" ></a>
                          <a href=\"{{path('logout')}}\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
                          {% endif %}
                     {% else %}
+                        <a href=\"{{path('app_index')}}\">О нас</a>
                         <a href=\"catalog.html\">Контакты</a>
                         <a href=\"{{path('app_login')}}\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
                     

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Все товары{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+    <script> alert('{{ message }}')</script>
+{% endfor %}
+      <main class="all_main">
+    <div class="big_void"></div>
+        <div class="catalogue_small">
+            <div class="r1 c2"><div>ВСЕ ТОВАРЫ</div></div>
+        </div>
+        <div class="big_void"></div>
+       
+   
+    {% if items is empty %}
+        <div class="empty_cart">Нет товаров</div>
+    {% else %}
+        <div class="th_cart">
+            <div></div>
+            <div>Фото</div>
+            <div>Название</div>
+            <div class="js_cent">Цена</div>
+            <div class="js_cent">В наличии</div>
+           <div class="js_cent">Действия</div>
+        </div>
+        {% set sum = 0 %}
+         {% for item in items %}
+                     <div class="tr_cart">
+                        <div></div>
+                        <div class="cart_img"><img src="{{ asset('images/items/' ~ item.getImage()) }}" alt="{{ item.getName() }}" class="cart_image"></div>
+                        <div>{{ item.getName() }}</div>
+                        <div class="js_cent">{{ item.getPrice() }} ₽</div>
+                        <div class="js_cent">{{ item.getLast() }}</div>
+                         <div class="js_cent">
+                    <a href="{{ path('item_edit', { 'id': item.getId() }) }}" class="button">Редактировать</a>
+                    <form action="{{ path('item_delete', { 'id': item.getId() }) }}" method="post" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.getId()) }}">
+                        <button type="submit" class="button_delete" onclick="return confirm('Вы уверены?')">Удалить</button>
+                    </form>
+                </div>
+                    </div>
+                {% endfor %}
+   
+    {% endif %}
+      <div id="empty_px"></div>
+       </main>
+   
+{% endblock %}

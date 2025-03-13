@@ -25,6 +25,8 @@ return [
         '/login_db' => [[['_route' => 'login_db', '_controller' => 'App\\Controller\\PostsController::login_db'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\PostsController::logout'], null, ['GET' => 0], null, false, false, null]],
         '/admin_orders' => [[['_route' => 'admin_orders', '_controller' => 'App\\Controller\\PostsController::admin_orders'], null, null, null, false, false, null]],
+        '/admin_items' => [[['_route' => 'admin_items', '_controller' => 'App\\Controller\\PostsController::admin_items'], null, null, null, false, false, null]],
+        '/create' => [[['_route' => 'item_create', '_controller' => 'App\\Controller\\PostsController::create'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -53,6 +55,8 @@ return [
                     .'|remove/([^/]++)(*:296)'
                 .')'
                 .'|/update\\-order\\-status/([^/]++)(*:336)'
+                .'|/edit/([^/]++)(*:358)'
+                .'|/delete/([^/]++)(*:382)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -68,8 +72,10 @@ return [
         244 => [[['_route' => 'item_detail', '_controller' => 'App\\Controller\\PostsController::itemDetail'], ['id'], null, null, false, true, null]],
         273 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\PostsController::addToCart'], ['id'], null, null, false, true, null]],
         296 => [[['_route' => 'cart_remove', '_controller' => 'App\\Controller\\PostsController::removeFromCart'], ['id'], null, null, false, true, null]],
-        336 => [
-            [['_route' => 'update_order_status', '_controller' => 'App\\Controller\\PostsController::updateOrderStatus'], ['id'], ['POST' => 0], null, false, true, null],
+        336 => [[['_route' => 'update_order_status', '_controller' => 'App\\Controller\\PostsController::updateOrderStatus'], ['id'], ['POST' => 0], null, false, true, null]],
+        358 => [[['_route' => 'item_edit', '_controller' => 'App\\Controller\\PostsController::edit'], ['id'], null, null, false, true, null]],
+        382 => [
+            [['_route' => 'item_delete', '_controller' => 'App\\Controller\\PostsController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

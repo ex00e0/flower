@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <main class="form_main">
+        <div class="catalogue_small">
+            <div class="r1 c2"><div>{{ title }}</div></div>
+        </div>
+
+        <div class="form_container">
+            {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+            <div>
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+            <div>
+                {{ form_label(form.imageFile) }}
+                {{ form_widget(form.imageFile) }}
+            </div>
+            {% if item.image %}
+                <div>
+                    <p>Текущее изображение:</p>
+                    <img src="{{ asset('images/items/' ~ item.image) }}" width="150">
+                </div>
+            {% endif %}
+            <div>
+                {{ form_label(form.price) }}
+                {{ form_widget(form.price) }}
+            </div>
+            <div>
+                {{ form_label(form.last) }}
+                {{ form_widget(form.last) }}
+            </div>
+            <button type="submit" class="button">Сохранить</button>
+            {{ form_end(form) }}
+        </div>
+    </main>
+{% endblock %}
