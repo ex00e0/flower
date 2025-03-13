@@ -15,6 +15,7 @@ use App\Entity\Order;
 
 use App\Form\RegistrationType;
 use App\Form\AuthType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -123,6 +124,40 @@ public function makeOrder(
             'catalogue' => $catalogue,
         ]);
     }
+
+    #[Route('/orders', name: 'orders')]
+    public function orders(EntityManagerInterface $entityManager, Security $security): Response
+    {
+        $user = $security->getUser();
+
+        if (!$user) {
+            $this->addFlash('error', 'Для просмотра заказов необходимо авторизоваться.');
+            return $this->redirectToRoute('login'); 
+        }
+
+        $orders = $entityManager->getRepository(Order::class)->findBy(['user_id' => $user], ['date' => 'DESC']);
+
+        $itemIds = [];
+        foreach ($orders as $order) {
+            $compound = $order->getCompound();
+            if (is_array($compound)) {
+                $itemIds = array_merge($itemIds, array_keys($compound));
+            }
+        }
+    
+        $items = $entityManager->getRepository(Item::class)->findBy(['id' => array_unique($itemIds)]);
+    
+        $itemNames = [];
+        foreach ($items as $item) {
+            $itemNames[$item->getId()] = $item->getName();
+        }
+
+        return $this->render('order.html.twig', [
+            'orders' => $orders,
+            'itemNames' => $itemNames,
+        ]);
+    }
+
     
     #[Route('/item/{id}', name: 'item_detail')]
     public function itemDetail(Item $item, EntityManagerInterface $entityManager, Security $security): Response
@@ -286,7 +321,7 @@ public function removeFromCart(int $id, EntityManagerInterface $entityManager, S
         Security $security
     ): Response {
         if ($security->getUser()) {
-            return $this->redirectToRoute('app_index');
+            return $this->redirectBasedOnRole($security->getUser());
         }
     
         $form = $this->createForm(AuthType::class);
@@ -304,11 +339,12 @@ public function removeFromCart(int $id, EntityManagerInterface $entityManager, S
             } else if (!$passwordHasher->isPasswordValid($user, $password)) {
                 $errors[] = 'Неверный пароль';
             } else {
-                return $userAuthenticator->authenticateUser(
+                $response =  $userAuthenticator->authenticateUser(
                     $user,
                     $authenticator,
                     $request
                 );
+                return $this->redirectBasedOnRole($user);
             }
         } else {
             foreach ($form->getErrors(true, true) as $error) {
@@ -322,11 +358,68 @@ public function removeFromCart(int $id, EntityManagerInterface $entityManager, S
         ]);
     }
 
+    private function redirectBasedOnRole(User $user): Response
+{
+    if (in_array('ROLE_ADMIN', $user->getRoles(), true)) {
+        return $this->redirectToRoute('admin_orders'); 
+    }
+
+    return $this->redirectToRoute('cart'); // Перенаправление на страницу пользователя
+}
+
     #[Route('/logout', name: 'logout', methods: ['GET'])]
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout firewall.');
     }
 
+    #[Route('/admin_orders', name: 'admin_orders')]
+    public function admin_orders( EntityManagerInterface $entityManager): Response
+    {
+        $orders = $entityManager->getRepository(Order::class)->findBy([],['date' => 'DESC']);
+        $itemIds = [];
+        foreach ($orders as $order) {
+            $compound = $order->getCompound();
+            if (is_array($compound)) {
+                $itemIds = array_merge($itemIds, array_keys($compound));
+            }
+        }
     
+        $items = $entityManager->getRepository(Item::class)->findBy(['id' => array_unique($itemIds)]);
+    
+        $itemNames = [];
+        foreach ($items as $item) {
+            $itemNames[$item->getId()] = $item->getName();
+        }
+
+        return $this->render('admin_orders.html.twig', [
+            'orders' => $orders,
+            'itemNames' => $itemNames,
+        ]);
+    }
+
+    #[Route('/update-order-status/{id}', name: 'update_order_status', methods: ['POST'])]
+public function updateOrderStatus(int $id, Request $request, EntityManagerInterface $entityManager): JsonResponse
+{
+    $order = $entityManager->getRepository(Order::class)->find($id);
+    
+    if (!$order) {
+        return new JsonResponse(['success' => false, 'message' => 'Заказ не найден'], Response::HTTP_NOT_FOUND);
+    }
+
+    $data = json_decode($request->getContent(), true);
+    
+    if (!isset($data['status'])) {
+        return new JsonResponse(['success' => false, 'message' => 'Некорректные данные'], Response::HTTP_BAD_REQUEST);
+    }
+
+    $order->setStatus($data['status']);
+    $entityManager->persist($order);
+    $entityManager->flush();
+
+    return new JsonResponse(['success' => true, 'message' => 'Статус заказа обновлён']);
 }
+}
+
+
+

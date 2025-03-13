@@ -21,6 +21,12 @@
              <div class="one_price c4 r2">{{ item.getPrice() }} ₽</div>
 
              {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="r3 c4 one_price">Вы как администратор не можете пользоваться корзиной</div>
+                {% else %}
+                
+                
+
                 {% set in_cart = false %}
                 {% set quantity = 0 %}
 
@@ -41,6 +47,7 @@
                     <div class="r3 c4 one_button">
                         <a href="{{ path('cart_add', {'id': item.getId()}) }}" >добавить в корзину</a>
                     </div>
+                {% endif %}
                 {% endif %}
                 {% else %}
                     <div class="r3 c4 one_price">Для добавления в корзину авторизуйтесь</div>

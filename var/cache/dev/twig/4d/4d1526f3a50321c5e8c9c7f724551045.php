@@ -87,41 +87,64 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
         // line 25
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
             // line 26
-            yield "                         <a href=\"delivery.html\">Заказы</a> 
+            yield "                        ";
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+                // line 27
+                yield "                            <a href=\"";
+                yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_orders");
+                yield "\">Все заказы</a> 
                          <a href=\"";
-            // line 27
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart");
-            yield "\"><img src=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/shopping-cart (2).png"), "html", null, true);
-            yield "\" ></a>
+                // line 28
+                yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+                yield "\"><img src=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter (1).png"), "html", null, true);
+                yield "\" ></a>
+
+                        ";
+            } else {
+                // line 31
+                yield "                         <a href=\"";
+                yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("orders");
+                yield "\">Заказы</a> 
                          <a href=\"";
-            // line 28
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
-            yield "\"><img src=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter (1).png"), "html", null, true);
-            yield "\" ></a>
-                    ";
+                // line 32
+                yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart");
+                yield "\"><img src=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/shopping-cart (2).png"), "html", null, true);
+                yield "\" ></a>
+                         <a href=\"";
+                // line 33
+                yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+                yield "\"><img src=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter (1).png"), "html", null, true);
+                yield "\" ></a>
+                         ";
+            }
+            // line 35
+            yield "                    ";
         } else {
-            // line 30
+            // line 36
             yield "                        <a href=\"catalog.html\">Контакты</a>
                         <a href=\"";
-            // line 31
+            // line 37
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             yield "\"><img src=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/enter (1).png"), "html", null, true);
             yield "\" ></a>
+                    
                     ";
         }
-        // line 33
+        // line 40
         yield "
+
                 </nav>
             </div>
         </header>
        
         ";
-        // line 38
+        // line 46
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 39
+        // line 47
         yield "        
         <script>
         if (document.body.scrollHeight < document.documentElement.clientHeight) {
@@ -192,7 +215,7 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
         yield from [];
     }
 
-    // line 38
+    // line 46
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -235,7 +258,7 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  196 => 38,  185 => 13,  172 => 12,  157 => 8,  144 => 7,  125 => 39,  123 => 38,  116 => 33,  109 => 31,  106 => 30,  99 => 28,  93 => 27,  90 => 26,  88 => 25,  83 => 23,  79 => 22,  75 => 21,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
+        return array (  219 => 46,  208 => 13,  195 => 12,  180 => 8,  167 => 7,  148 => 47,  146 => 46,  138 => 40,  130 => 37,  127 => 36,  124 => 35,  117 => 33,  111 => 32,  106 => 31,  98 => 28,  93 => 27,  90 => 26,  88 => 25,  83 => 23,  79 => 22,  75 => 21,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -265,13 +288,21 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
                     <a href=\"{{path('app_index')}}\">О нас</a>
                    
                     {% if is_granted('IS_AUTHENTICATED_FULLY')%}
-                         <a href=\"delivery.html\">Заказы</a> 
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href=\"{{ path('admin_orders') }}\">Все заказы</a> 
+                         <a href=\"{{path('logout')}}\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
+
+                        {% else %}
+                         <a href=\"{{path('orders')}}\">Заказы</a> 
                          <a href=\"{{path('cart')}}\"><img src=\"{{ asset('images/shopping-cart (2).png') }}\" ></a>
                          <a href=\"{{path('logout')}}\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
+                         {% endif %}
                     {% else %}
                         <a href=\"catalog.html\">Контакты</a>
                         <a href=\"{{path('app_login')}}\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
+                    
                     {% endif %}
+
 
                 </nav>
             </div>

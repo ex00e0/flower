@@ -110,14 +110,14 @@ class __TwigTemplate_0d696de40e88cd1b4a2810a6458df6db extends Template
         unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 9
-        yield "   <main>
+        yield "      <main class=\"all_main\">
     <div class=\"big_void\"></div>
         <div class=\"catalogue_small\">
             <div class=\"r1 c2\"><div>ВАША КОРЗИНА</div></div>
         </div>
         <div class=\"big_void\"></div>
        
-    </main>
+   
     ";
         // line 17
         if (Twig\Extension\CoreExtension::testEmpty((isset($context["cartItems"]) || array_key_exists("cartItems", $context) ? $context["cartItems"] : (function () { throw new RuntimeError('Variable "cartItems" does not exist.', 17, $this->source); })()))) {
@@ -208,7 +208,9 @@ class __TwigTemplate_0d696de40e88cd1b4a2810a6458df6db extends Template
     ";
         }
         // line 54
-        yield "   
+        yield "      <div id=\"empty_px\"></div>
+       </main>
+   
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -253,14 +255,14 @@ class __TwigTemplate_0d696de40e88cd1b4a2810a6458df6db extends Template
 {% for message in app.flashes('success') %}
     <script> alert('{{ message }}')</script>
 {% endfor %}
-   <main>
+      <main class=\"all_main\">
     <div class=\"big_void\"></div>
         <div class=\"catalogue_small\">
             <div class=\"r1 c2\"><div>ВАША КОРЗИНА</div></div>
         </div>
         <div class=\"big_void\"></div>
        
-    </main>
+   
     {% if cartItems is empty %}
         <div class=\"empty_cart\">Корзина пуста</div>
     {% else %}
@@ -298,6 +300,8 @@ class __TwigTemplate_0d696de40e88cd1b4a2810a6458df6db extends Template
                     </div>
         </div>
     {% endif %}
+      <div id=\"empty_px\"></div>
+       </main>
    
 {% endblock %}
 ", "cart.html.twig", "C:\\OSPanel\\domains\\flower\\templates\\cart.html.twig");

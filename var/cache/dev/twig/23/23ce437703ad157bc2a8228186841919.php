@@ -101,7 +101,7 @@ class __TwigTemplate_d3bdcaa99a20a93376f57cc48a181219 extends Template
 
 
 
-<main>
+<main class=\"all_main\">
 <div class=\"big_void\"></div>
         <div class=\"catalogue_small\">
             <div class=\"r1 c2\"><div>КАТАЛОГ</div></div>
@@ -179,7 +179,8 @@ class __TwigTemplate_d3bdcaa99a20a93376f57cc48a181219 extends Template
         unset($context['_seq'], $context['_key'], $context['item'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 45
-        yield "       
+        yield "    <div id=\"empty_px\"></div>
+       
     </main>
 
 
@@ -230,7 +231,7 @@ class __TwigTemplate_d3bdcaa99a20a93376f57cc48a181219 extends Template
 
 
 
-<main>
+<main class=\"all_main\">
 <div class=\"big_void\"></div>
         <div class=\"catalogue_small\">
             <div class=\"r1 c2\"><div>КАТАЛОГ</div></div>
@@ -265,6 +266,7 @@ class __TwigTemplate_d3bdcaa99a20a93376f57cc48a181219 extends Template
             
                     
                 {% endfor %}
+    <div id=\"empty_px\"></div>
        
     </main>
 

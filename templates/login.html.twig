@@ -11,10 +11,9 @@
 <div class="big_void"></div>
 
     <form action="{{ path('login_db') }}" method="post">
-        {# Токен защиты CSRF #}
+
         {{ form_row(form._token) }}
 
-        {# Поле email (логина) #}
         <label for="login">Электронная почта</label>
         {{ form_widget(form.login, {'attr': {'type': 'email'}}) }}
         <div class="error_error">{{ form_errors(form.login) }}
@@ -29,7 +28,6 @@
         {% endif %}
         </div>
 
-        {# Поле пароля #}
         <label for="password">Пароль</label>
         {{ form_widget(form.password, {'attr': {'type': 'password'}}) }}
         <div class="error_error">{{ form_errors(form.password) }}
@@ -44,7 +42,6 @@
         {% endif %}
         </div>
 
-        {# Кнопка отправки #}
         <input type="submit" value="отправить">
         <a class="no_acc" href="{{ path('app_reg') }}">Еще нет аккаунта? Зарегистрируйтесь</a>
     </form>

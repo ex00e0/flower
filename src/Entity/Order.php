@@ -30,6 +30,10 @@ class Order
     #[ORM\Column(type: Types::JSON)]
     private ?array $compound = [];
 
+    #[ORM\Column(type: 'string', length: 20, options: ['default' => 'создан'])]
+    private ?string $status = 'создан';
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,6 +50,20 @@ class Order
         return $this;
     }
 
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        if (!in_array($status, ['создан', 'отклонен', 'принят', 'выполнен'])) {
+            throw new \InvalidArgumentException("Недопустимый статус заказа");
+        }
+        $this->status = $status;
+        return $this;
+    }
+    
     public function getCompound(): ?array
     {
         return $this->compound;

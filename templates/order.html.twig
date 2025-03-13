@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Мои заказы{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+    <script> alert('{{ message }}')</script>
+{% endfor %}
+   <main class="all_main">
+    <div class="big_void"></div>
+        <div class="catalogue_small">
+            <div class="r1 c2"><div>ВАШИ ЗАКАЗЫ</div></div>
+        </div>
+        <div class="big_void"></div>
+       
+    
+    {% if orders is empty %}
+        <div class="empty_cart">Заказов нет</div>
+    {% else %}
+        <div class="th_order">
+            <div></div>
+            <div class="js_cent">Номер</div>
+            <div class="js_cent">Дата</div>
+            <div class="js_cent">Сумма</div>
+            <div class="js_cent">Состав заказа</div>
+            <div class="js_cent">Статус</div>
+
+        </div>
+        {% for order in orders %}
+        <div class="tr_order">
+            <div></div>
+            <div>{{ order.getId() }}</div>
+                        <div>{{ order.getDate()|date('d.m.Y H:i') }}</div>
+                        <div>{{ order.getSum() }} ₽</div>
+                        <div>
+                            {% set compound = order.getCompound() %}
+                            {% for itemId, quantity in compound %}
+                                <p>{{itemNames[itemId] ?? 'Неизвестный товар' }}, Количество: {{ quantity }}</p>
+                            {% endfor %}
+                        </div>
+            <div>{{ order.getStatus() }}</div>
+
+        </div>
+         {% endfor %}
+    {% endif %}
+    <div id="empty_px"></div>
+    </main>
+   
+{% endblock %}

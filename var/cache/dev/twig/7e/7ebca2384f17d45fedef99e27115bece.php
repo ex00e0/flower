@@ -86,7 +86,9 @@ class __TwigTemplate_e20d18dce56381759fbd19b14b80adfd extends Template
         // line 25
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
             // line 26
-            yield "                         <a href=\"delivery.html\">Заказы</a> 
+            yield "                         <a href=\"";
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("orders");
+            yield "\">Заказы</a> 
                          <a href=\"";
             // line 27
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart");
@@ -287,7 +289,7 @@ class __TwigTemplate_e20d18dce56381759fbd19b14b80adfd extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  259 => 13,  246 => 12,  231 => 8,  218 => 7,  197 => 71,  189 => 68,  187 => 67,  183 => 65,  177 => 61,  174 => 60,  168 => 56,  166 => 55,  161 => 53,  157 => 52,  151 => 51,  147 => 50,  144 => 49,  139 => 48,  137 => 47,  132 => 45,  123 => 39,  115 => 33,  108 => 31,  105 => 30,  98 => 28,  92 => 27,  89 => 26,  87 => 25,  82 => 23,  78 => 22,  74 => 21,  65 => 14,  63 => 12,  60 => 11,  58 => 7,  50 => 1,);
+        return array (  261 => 13,  248 => 12,  233 => 8,  220 => 7,  199 => 71,  191 => 68,  189 => 67,  185 => 65,  179 => 61,  176 => 60,  170 => 56,  168 => 55,  163 => 53,  159 => 52,  153 => 51,  149 => 50,  146 => 49,  141 => 48,  139 => 47,  134 => 45,  125 => 39,  117 => 33,  110 => 31,  107 => 30,  100 => 28,  94 => 27,  89 => 26,  87 => 25,  82 => 23,  78 => 22,  74 => 21,  65 => 14,  63 => 12,  60 => 11,  58 => 7,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -317,7 +319,7 @@ class __TwigTemplate_e20d18dce56381759fbd19b14b80adfd extends Template
                     <a href=\"{{path('app_index')}}\">О нас</a>
                    
                     {% if is_granted('IS_AUTHENTICATED_FULLY')%}
-                         <a href=\"delivery.html\">Заказы</a> 
+                         <a href=\"{{path('orders')}}\">Заказы</a> 
                          <a href=\"{{path('cart')}}\"><img src=\"{{ asset('images/shopping-cart (1).png') }}\" ></a>
                          <a href=\"{{path('logout')}}\"><img src=\"{{ asset('images/enter.png') }}\" ></a>
                     {% else %}

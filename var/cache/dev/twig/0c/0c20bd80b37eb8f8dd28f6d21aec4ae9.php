@@ -145,74 +145,88 @@ class __TwigTemplate_8e5c255eee3918e002696131d1aede6d extends Template
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
             // line 24
             yield "                ";
-            $context["in_cart"] = false;
-            // line 25
-            yield "                ";
-            $context["quantity"] = 0;
-            // line 26
-            yield "
-                ";
-            // line 27
-            $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["cartItems"]) || array_key_exists("cartItems", $context) ? $context["cartItems"] : (function () { throw new RuntimeError('Variable "cartItems" does not exist.', 27, $this->source); })()));
-            foreach ($context['_seq'] as $context["_key"] => $context["cart_item"]) {
-                // line 28
-                yield "                    ";
-                if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["cart_item"], "getItem", [], "any", false, false, false, 28), "id", [], "method", false, false, false, 28) == CoreExtension::getAttribute($this->env, $this->source, (isset($context["item"]) || array_key_exists("item", $context) ? $context["item"] : (function () { throw new RuntimeError('Variable "item" does not exist.', 28, $this->source); })()), "getId", [], "method", false, false, false, 28))) {
-                    // line 29
-                    yield "                        ";
-                    $context["in_cart"] = true;
-                    // line 30
-                    yield "                        ";
-                    $context["quantity"] = CoreExtension::getAttribute($this->env, $this->source, $context["cart_item"], "getAddon", [], "method", false, false, false, 30);
-                    // line 31
-                    yield "                    ";
-                }
-                // line 32
-                yield "                ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['cart_item'], $context['_parent']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 33
-            yield "
-                ";
-            // line 34
-            if ((isset($context["in_cart"]) || array_key_exists("in_cart", $context) ? $context["in_cart"] : (function () { throw new RuntimeError('Variable "in_cart" does not exist.', 34, $this->source); })())) {
-                // line 35
-                yield "                    <div class=\"r3 c4 one_button_pm\">
-                        <a href=\"";
-                // line 36
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_remove", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["item"]) || array_key_exists("item", $context) ? $context["item"] : (function () { throw new RuntimeError('Variable "item" does not exist.', 36, $this->source); })()), "getId", [], "method", false, false, false, 36)]), "html", null, true);
-                yield "\">−</a>
-                        <div>";
-                // line 37
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["quantity"]) || array_key_exists("quantity", $context) ? $context["quantity"] : (function () { throw new RuntimeError('Variable "quantity" does not exist.', 37, $this->source); })()), "html", null, true);
-                yield "</div>
-                        <a href=\"";
-                // line 38
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_add", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["item"]) || array_key_exists("item", $context) ? $context["item"] : (function () { throw new RuntimeError('Variable "item" does not exist.', 38, $this->source); })()), "getId", [], "method", false, false, false, 38)]), "html", null, true);
-                yield "\">+</a>
-                    </div>
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+                // line 25
+                yield "                    <div class=\"r3 c4 one_price\">Вы как администратор не можете пользоваться корзиной</div>
                 ";
             } else {
-                // line 41
-                yield "                    <div class=\"r3 c4 one_button\">
+                // line 27
+                yield "                
+                
+
+                ";
+                // line 30
+                $context["in_cart"] = false;
+                // line 31
+                yield "                ";
+                $context["quantity"] = 0;
+                // line 32
+                yield "
+                ";
+                // line 33
+                $context['_parent'] = $context;
+                $context['_seq'] = CoreExtension::ensureTraversable((isset($context["cartItems"]) || array_key_exists("cartItems", $context) ? $context["cartItems"] : (function () { throw new RuntimeError('Variable "cartItems" does not exist.', 33, $this->source); })()));
+                foreach ($context['_seq'] as $context["_key"] => $context["cart_item"]) {
+                    // line 34
+                    yield "                    ";
+                    if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["cart_item"], "getItem", [], "any", false, false, false, 34), "id", [], "method", false, false, false, 34) == CoreExtension::getAttribute($this->env, $this->source, (isset($context["item"]) || array_key_exists("item", $context) ? $context["item"] : (function () { throw new RuntimeError('Variable "item" does not exist.', 34, $this->source); })()), "getId", [], "method", false, false, false, 34))) {
+                        // line 35
+                        yield "                        ";
+                        $context["in_cart"] = true;
+                        // line 36
+                        yield "                        ";
+                        $context["quantity"] = CoreExtension::getAttribute($this->env, $this->source, $context["cart_item"], "getAddon", [], "method", false, false, false, 36);
+                        // line 37
+                        yield "                    ";
+                    }
+                    // line 38
+                    yield "                ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_key'], $context['cart_item'], $context['_parent']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 39
+                yield "
+                ";
+                // line 40
+                if ((isset($context["in_cart"]) || array_key_exists("in_cart", $context) ? $context["in_cart"] : (function () { throw new RuntimeError('Variable "in_cart" does not exist.', 40, $this->source); })())) {
+                    // line 41
+                    yield "                    <div class=\"r3 c4 one_button_pm\">
                         <a href=\"";
-                // line 42
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_add", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["item"]) || array_key_exists("item", $context) ? $context["item"] : (function () { throw new RuntimeError('Variable "item" does not exist.', 42, $this->source); })()), "getId", [], "method", false, false, false, 42)]), "html", null, true);
-                yield "\" >добавить в корзину</a>
+                    // line 42
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_remove", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["item"]) || array_key_exists("item", $context) ? $context["item"] : (function () { throw new RuntimeError('Variable "item" does not exist.', 42, $this->source); })()), "getId", [], "method", false, false, false, 42)]), "html", null, true);
+                    yield "\">−</a>
+                        <div>";
+                    // line 43
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["quantity"]) || array_key_exists("quantity", $context) ? $context["quantity"] : (function () { throw new RuntimeError('Variable "quantity" does not exist.', 43, $this->source); })()), "html", null, true);
+                    yield "</div>
+                        <a href=\"";
+                    // line 44
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_add", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["item"]) || array_key_exists("item", $context) ? $context["item"] : (function () { throw new RuntimeError('Variable "item" does not exist.', 44, $this->source); })()), "getId", [], "method", false, false, false, 44)]), "html", null, true);
+                    yield "\">+</a>
                     </div>
                 ";
+                } else {
+                    // line 47
+                    yield "                    <div class=\"r3 c4 one_button\">
+                        <a href=\"";
+                    // line 48
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_add", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["item"]) || array_key_exists("item", $context) ? $context["item"] : (function () { throw new RuntimeError('Variable "item" does not exist.', 48, $this->source); })()), "getId", [], "method", false, false, false, 48)]), "html", null, true);
+                    yield "\" >добавить в корзину</a>
+                    </div>
+                ";
+                }
+                // line 51
+                yield "                ";
             }
-            // line 45
+            // line 52
             yield "                ";
         } else {
-            // line 46
+            // line 53
             yield "                    <div class=\"r3 c4 one_price\">Для добавления в корзину авторизуйтесь</div>
                 ";
         }
-        // line 48
+        // line 55
         yield "
         </section>
        
@@ -252,7 +266,7 @@ class __TwigTemplate_8e5c255eee3918e002696131d1aede6d extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  216 => 48,  212 => 46,  209 => 45,  203 => 42,  200 => 41,  194 => 38,  190 => 37,  186 => 36,  183 => 35,  181 => 34,  178 => 33,  172 => 32,  169 => 31,  166 => 30,  163 => 29,  160 => 28,  156 => 27,  153 => 26,  150 => 25,  147 => 24,  145 => 23,  140 => 21,  136 => 20,  130 => 19,  123 => 15,  117 => 11,  108 => 9,  104 => 8,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  230 => 55,  226 => 53,  223 => 52,  220 => 51,  214 => 48,  211 => 47,  205 => 44,  201 => 43,  197 => 42,  194 => 41,  192 => 40,  189 => 39,  183 => 38,  180 => 37,  177 => 36,  174 => 35,  171 => 34,  167 => 33,  164 => 32,  161 => 31,  159 => 30,  154 => 27,  150 => 25,  147 => 24,  145 => 23,  140 => 21,  136 => 20,  130 => 19,  123 => 15,  117 => 11,  108 => 9,  104 => 8,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -280,6 +294,12 @@ class __TwigTemplate_8e5c255eee3918e002696131d1aede6d extends Template
              <div class=\"one_price c4 r2\">{{ item.getPrice() }} ₽</div>
 
              {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class=\"r3 c4 one_price\">Вы как администратор не можете пользоваться корзиной</div>
+                {% else %}
+                
+                
+
                 {% set in_cart = false %}
                 {% set quantity = 0 %}
 
@@ -300,6 +320,7 @@ class __TwigTemplate_8e5c255eee3918e002696131d1aede6d extends Template
                     <div class=\"r3 c4 one_button\">
                         <a href=\"{{ path('cart_add', {'id': item.getId()}) }}\" >добавить в корзину</a>
                     </div>
+                {% endif %}
                 {% endif %}
                 {% else %}
                     <div class=\"r3 c4 one_price\">Для добавления в корзину авторизуйтесь</div>

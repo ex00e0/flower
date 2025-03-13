@@ -18,11 +18,13 @@ return [
         '/' => [[['_route' => 'app_index', '_controller' => 'App\\Controller\\PostsController::index'], null, null, null, false, false, null]],
         '/cart' => [[['_route' => 'cart', '_controller' => 'App\\Controller\\PostsController::cart'], null, null, null, false, false, null]],
         '/catalogue' => [[['_route' => 'catalogue', '_controller' => 'App\\Controller\\PostsController::catalogue'], null, null, null, false, false, null]],
+        '/orders' => [[['_route' => 'orders', '_controller' => 'App\\Controller\\PostsController::orders'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\PostsController::login'], null, null, null, false, false, null]],
         '/reg' => [[['_route' => 'app_reg', '_controller' => 'App\\Controller\\PostsController::reg'], null, null, null, false, false, null]],
         '/reg_db' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\PostsController::register'], null, null, null, false, false, null]],
         '/login_db' => [[['_route' => 'login_db', '_controller' => 'App\\Controller\\PostsController::login_db'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\PostsController::logout'], null, ['GET' => 0], null, false, false, null]],
+        '/admin_orders' => [[['_route' => 'admin_orders', '_controller' => 'App\\Controller\\PostsController::admin_orders'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -50,6 +52,7 @@ return [
                     .'|add/([^/]++)(*:273)'
                     .'|remove/([^/]++)(*:296)'
                 .')'
+                .'|/update\\-order\\-status/([^/]++)(*:336)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -64,8 +67,9 @@ return [
         222 => [[['_route' => 'make_order', '_controller' => 'App\\Controller\\PostsController::makeOrder'], ['sum'], null, null, false, true, null]],
         244 => [[['_route' => 'item_detail', '_controller' => 'App\\Controller\\PostsController::itemDetail'], ['id'], null, null, false, true, null]],
         273 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\PostsController::addToCart'], ['id'], null, null, false, true, null]],
-        296 => [
-            [['_route' => 'cart_remove', '_controller' => 'App\\Controller\\PostsController::removeFromCart'], ['id'], null, null, false, true, null],
+        296 => [[['_route' => 'cart_remove', '_controller' => 'App\\Controller\\PostsController::removeFromCart'], ['id'], null, null, false, true, null]],
+        336 => [
+            [['_route' => 'update_order_status', '_controller' => 'App\\Controller\\PostsController::updateOrderStatus'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

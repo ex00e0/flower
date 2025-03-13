@@ -354,7 +354,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.9y3UjLt"/>
+      <argument type="service" id=".service_locator..Q7DPPI"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1743,7 +1743,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.9y3UjLt"/>
+      <argument type="service" id=".service_locator..Q7DPPI"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -5329,31 +5329,37 @@
         <argument key="userAuthenticator" type="service_closure" id="security.user_authenticator"/>
       </argument>
     </service>
-    <service id=".service_locator.9y3UjLt" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator..Q7DPPI" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\PostsController::addToCart" type="service_closure" id=".service_locator.J2r0Nrg"/>
+        <argument key="App\Controller\PostsController::admin_orders" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController::cart" type="service_closure" id=".service_locator.J2r0Nrg"/>
         <argument key="App\Controller\PostsController::catalogue" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController::index" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController::itemDetail" type="service_closure" id=".service_locator.u1f_Ssc"/>
         <argument key="App\Controller\PostsController::login_db" type="service_closure" id=".service_locator.sBSvV5M"/>
         <argument key="App\Controller\PostsController::makeOrder" type="service_closure" id=".service_locator.J2r0Nrg"/>
+        <argument key="App\Controller\PostsController::orders" type="service_closure" id=".service_locator.J2r0Nrg"/>
         <argument key="App\Controller\PostsController::register" type="service_closure" id=".service_locator.sBSvV5M"/>
         <argument key="App\Controller\PostsController::removeFromCart" type="service_closure" id=".service_locator.J2r0Nrg"/>
+        <argument key="App\Controller\PostsController::updateOrderStatus" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Controller\PostsController:addToCart" type="service_closure" id=".service_locator.J2r0Nrg"/>
+        <argument key="App\Controller\PostsController:admin_orders" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController:cart" type="service_closure" id=".service_locator.J2r0Nrg"/>
         <argument key="App\Controller\PostsController:catalogue" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController:index" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PostsController:itemDetail" type="service_closure" id=".service_locator.u1f_Ssc"/>
         <argument key="App\Controller\PostsController:login_db" type="service_closure" id=".service_locator.sBSvV5M"/>
         <argument key="App\Controller\PostsController:makeOrder" type="service_closure" id=".service_locator.J2r0Nrg"/>
+        <argument key="App\Controller\PostsController:orders" type="service_closure" id=".service_locator.J2r0Nrg"/>
         <argument key="App\Controller\PostsController:register" type="service_closure" id=".service_locator.sBSvV5M"/>
         <argument key="App\Controller\PostsController:removeFromCart" type="service_closure" id=".service_locator.J2r0Nrg"/>
+        <argument key="App\Controller\PostsController:updateOrderStatus" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
       </argument>
@@ -6780,7 +6786,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.9y3UjLt"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator..Q7DPPI"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
@@ -6788,7 +6794,7 @@
     <service id=".service_locator.e9C_9eg" alias=".service_locator.J2r0Nrg"/>
     <service id=".service_locator.zYcT7Fe" alias=".service_locator.u1f_Ssc"/>
     <service id=".service_locator.XkSwnEJ" alias=".service_locator.sBSvV5M"/>
-    <service id=".service_locator.mFy6UzC" alias=".service_locator.9y3UjLt"/>
+    <service id=".service_locator.OnjoeMC" alias=".service_locator..Q7DPPI"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.QU.Bqeu" alias=".service_locator.18OO7Xi"/>
     <service id=".service_locator.LMuqDDe" alias=".service_locator.VHsrTPK"/>
