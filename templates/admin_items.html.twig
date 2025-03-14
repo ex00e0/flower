@@ -18,6 +18,11 @@
         <div class="empty_cart">Нет товаров</div>
     {% else %}
         <div class="th_cart">
+           <a href="{{ path('item_create') }}" class="button_create c5-7">создать новый товар</a>
+        </div>
+        <div class="big_void"></div>
+
+        <div class="th_cart">
             <div></div>
             <div>Фото</div>
             <div>Название</div>
@@ -34,11 +39,9 @@
                         <div class="js_cent">{{ item.getPrice() }} ₽</div>
                         <div class="js_cent">{{ item.getLast() }}</div>
                          <div class="js_cent">
-                    <a href="{{ path('item_edit', { 'id': item.getId() }) }}" class="button">Редактировать</a>
-                    <form action="{{ path('item_delete', { 'id': item.getId() }) }}" method="post" style="display:inline;">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.getId()) }}">
-                        <button type="submit" class="button_delete" onclick="return confirm('Вы уверены?')">Удалить</button>
-                    </form>
+                    <a href="{{ path('item_edit', { 'id': item.getId() }) }}"><img src="{{ asset('images/free-icon-edit-1159633.png') }}" class="button-items"></a>
+                    <a href="{{ path('item_delete', { 'id': item.getId() }) }}"><img src="{{ asset('images/free-icon-remove-folder-circular-button-8345013.png') }}" class="button-items"></a>
+
                 </div>
                     </div>
                 {% endfor %}

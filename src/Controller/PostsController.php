@@ -473,7 +473,7 @@ public function admin_items( EntityManagerInterface $entityManager): Response
 
         return $this->render('item_form.html.twig', [
             'form' => $form->createView(),
-            'title' => 'Добавить товар',
+            'title' => 'СОЗДАНИЕ ТОВАРА',
             'item' => $item,
         ]);
     }
@@ -507,28 +507,26 @@ public function admin_items( EntityManagerInterface $entityManager): Response
 
             $entityManager->flush();
 
-            $this->addFlash('success', 'Товар успешно обновлен!');
+            $this->addFlash('success', 'Товар успешно обновлен');
             return $this->redirectToRoute('admin_items');
 
         }
 
         return $this->render('item_form.html.twig', [
             'form' => $form->createView(),
-            'title' => 'Редактировать товар',
+            'title' => 'РЕДАКТИРОВАНИЕ ТОВАРА',
             'item' => $item,
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'item_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'item_delete', methods: ['GET'])]
     public function delete(Request $request, EntityManagerInterface $entityManager, Item $item): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $item->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($item);
-            $entityManager->flush();
-            $this->addFlash('success', 'Товар удален.');
-        }
+        $entityManager->remove($item);
+        $entityManager->flush();
+        $this->addFlash('success', 'Товар удален');
 
-        return $this->redirectToRoute('item_list');
+        return $this->redirectToRoute('admin_items');
     }
 
 }

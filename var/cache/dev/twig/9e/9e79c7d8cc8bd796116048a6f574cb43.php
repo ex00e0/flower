@@ -127,6 +127,14 @@ class __TwigTemplate_68381249201dd05db6c1dd412eed1ad7 extends Template
         } else {
             // line 20
             yield "        <div class=\"th_cart\">
+           <a href=\"";
+            // line 21
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("item_create");
+            yield "\" class=\"button_create c5-7\">создать новый товар</a>
+        </div>
+        <div class=\"big_void\"></div>
+
+        <div class=\"th_cart\">
             <div></div>
             <div>Фото</div>
             <div>Название</div>
@@ -135,49 +143,48 @@ class __TwigTemplate_68381249201dd05db6c1dd412eed1ad7 extends Template
            <div class=\"js_cent\">Действия</div>
         </div>
         ";
-            // line 28
+            // line 33
             $context["sum"] = 0;
-            // line 29
+            // line 34
             yield "         ";
             $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["items"]) || array_key_exists("items", $context) ? $context["items"] : (function () { throw new RuntimeError('Variable "items" does not exist.', 29, $this->source); })()));
+            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["items"]) || array_key_exists("items", $context) ? $context["items"] : (function () { throw new RuntimeError('Variable "items" does not exist.', 34, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
-                // line 30
+                // line 35
                 yield "                     <div class=\"tr_cart\">
                         <div></div>
                         <div class=\"cart_img\"><img src=\"";
-                // line 32
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/items/" . CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getImage", [], "method", false, false, false, 32))), "html", null, true);
+                // line 37
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/items/" . CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getImage", [], "method", false, false, false, 37))), "html", null, true);
                 yield "\" alt=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getName", [], "method", false, false, false, 32), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getName", [], "method", false, false, false, 37), "html", null, true);
                 yield "\" class=\"cart_image\"></div>
                         <div>";
-                // line 33
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getName", [], "method", false, false, false, 33), "html", null, true);
+                // line 38
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getName", [], "method", false, false, false, 38), "html", null, true);
                 yield "</div>
                         <div class=\"js_cent\">";
-                // line 34
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getPrice", [], "method", false, false, false, 34), "html", null, true);
+                // line 39
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getPrice", [], "method", false, false, false, 39), "html", null, true);
                 yield " ₽</div>
                         <div class=\"js_cent\">";
-                // line 35
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getLast", [], "method", false, false, false, 35), "html", null, true);
+                // line 40
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getLast", [], "method", false, false, false, 40), "html", null, true);
                 yield "</div>
                          <div class=\"js_cent\">
                     <a href=\"";
-                // line 37
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("item_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getId", [], "method", false, false, false, 37)]), "html", null, true);
-                yield "\" class=\"button\">Редактировать</a>
-                    <form action=\"";
-                // line 38
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("item_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getId", [], "method", false, false, false, 38)]), "html", null, true);
-                yield "\" method=\"post\" style=\"display:inline;\">
-                        <input type=\"hidden\" name=\"_token\" value=\"";
-                // line 39
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getId", [], "method", false, false, false, 39))), "html", null, true);
-                yield "\">
-                        <button type=\"submit\" class=\"button_delete\" onclick=\"return confirm('Вы уверены?')\">Удалить</button>
-                    </form>
+                // line 42
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("item_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getId", [], "method", false, false, false, 42)]), "html", null, true);
+                yield "\"><img src=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/free-icon-edit-1159633.png"), "html", null, true);
+                yield "\" class=\"button-items\"></a>
+                    <a href=\"";
+                // line 43
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("item_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["item"], "getId", [], "method", false, false, false, 43)]), "html", null, true);
+                yield "\"><img src=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/free-icon-remove-folder-circular-button-8345013.png"), "html", null, true);
+                yield "\" class=\"button-items\"></a>
+
                 </div>
                     </div>
                 ";
@@ -185,11 +192,11 @@ class __TwigTemplate_68381249201dd05db6c1dd412eed1ad7 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_key'], $context['item'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 45
+            // line 48
             yield "   
     ";
         }
-        // line 47
+        // line 50
         yield "      <div id=\"empty_px\"></div>
        </main>
    
@@ -224,7 +231,7 @@ class __TwigTemplate_68381249201dd05db6c1dd412eed1ad7 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  193 => 47,  189 => 45,  177 => 39,  173 => 38,  169 => 37,  164 => 35,  160 => 34,  156 => 33,  150 => 32,  146 => 30,  141 => 29,  139 => 28,  129 => 20,  125 => 18,  123 => 17,  113 => 9,  104 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  200 => 50,  196 => 48,  183 => 43,  177 => 42,  172 => 40,  168 => 39,  164 => 38,  158 => 37,  154 => 35,  149 => 34,  147 => 33,  132 => 21,  129 => 20,  125 => 18,  123 => 17,  113 => 9,  104 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -249,6 +256,11 @@ class __TwigTemplate_68381249201dd05db6c1dd412eed1ad7 extends Template
         <div class=\"empty_cart\">Нет товаров</div>
     {% else %}
         <div class=\"th_cart\">
+           <a href=\"{{ path('item_create') }}\" class=\"button_create c5-7\">создать новый товар</a>
+        </div>
+        <div class=\"big_void\"></div>
+
+        <div class=\"th_cart\">
             <div></div>
             <div>Фото</div>
             <div>Название</div>
@@ -265,11 +277,9 @@ class __TwigTemplate_68381249201dd05db6c1dd412eed1ad7 extends Template
                         <div class=\"js_cent\">{{ item.getPrice() }} ₽</div>
                         <div class=\"js_cent\">{{ item.getLast() }}</div>
                          <div class=\"js_cent\">
-                    <a href=\"{{ path('item_edit', { 'id': item.getId() }) }}\" class=\"button\">Редактировать</a>
-                    <form action=\"{{ path('item_delete', { 'id': item.getId() }) }}\" method=\"post\" style=\"display:inline;\">
-                        <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ item.getId()) }}\">
-                        <button type=\"submit\" class=\"button_delete\" onclick=\"return confirm('Вы уверены?')\">Удалить</button>
-                    </form>
+                    <a href=\"{{ path('item_edit', { 'id': item.getId() }) }}\"><img src=\"{{ asset('images/free-icon-edit-1159633.png') }}\" class=\"button-items\"></a>
+                    <a href=\"{{ path('item_delete', { 'id': item.getId() }) }}\"><img src=\"{{ asset('images/free-icon-remove-folder-circular-button-8345013.png') }}\" class=\"button-items\"></a>
+
                 </div>
                     </div>
                 {% endfor %}

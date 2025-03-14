@@ -378,7 +378,7 @@ form {
     display: grid;
     row-gap: 1vmax;
 }
-input[type='text'], input[type='email'], input[type='password'] {
+input[type='text'], input[type='email'], input[type='password'], input[type='file'] {
     outline: none;
     font-family: "Inter";
     color:black;
@@ -541,6 +541,23 @@ input[type='submit'] {
     height: 35%;
     align-self: center;
 }
+.c5-7 {
+    grid-column: 5/7;
+}
+.button_create {
+    display: grid;
+    font-family: "Ph R";
+    color:black;
+    font-size: 1.8vmax;
+    align-items: center;
+    justify-items: center;
+    justify-self: end;
+    width: 70%;
+    border-radius: 0.4vmax;
+    border: 0.15vmax solid black;
+    height: 100%;
+    align-self: center;
+}
 .cart_button_pm {
     display: grid;
     grid-template-columns: 1fr 5% 1fr;
@@ -616,4 +633,21 @@ input[type='submit'] {
     border: 0.15vmax solid black;
     height: 40%;
     align-self: center;
+}
+.button-items {
+    width: 2.2vmax;
+}
+.w_void {
+    width:1vmax;
+}
+.image_in_form {
+    width: 50%;
+    font-family: "Inter";
+    color:black;
+    justify-self: center;
+    font-size: 1.2vmax;
+}
+.img_form {
+    width:15vmax;
+    height:15vmax;
 }

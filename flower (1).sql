@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 14 2025 г., 01:00
+-- Время создания: Мар 14 2025 г., 04:36
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -230,7 +230,7 @@ ALTER TABLE `inventary`
 -- AUTO_INCREMENT для таблицы `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `order`

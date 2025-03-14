@@ -75,7 +75,7 @@ return [
         336 => [[['_route' => 'update_order_status', '_controller' => 'App\\Controller\\PostsController::updateOrderStatus'], ['id'], ['POST' => 0], null, false, true, null]],
         358 => [[['_route' => 'item_edit', '_controller' => 'App\\Controller\\PostsController::edit'], ['id'], null, null, false, true, null]],
         382 => [
-            [['_route' => 'item_delete', '_controller' => 'App\\Controller\\PostsController::delete'], ['id'], ['POST' => 0], null, false, true, null],
+            [['_route' => 'item_delete', '_controller' => 'App\\Controller\\PostsController::delete'], ['id'], ['GET' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

@@ -3,37 +3,50 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-    <main class="form_main">
+    <main class="all_main">
+    <div class="big_void"></div>
+
         <div class="catalogue_small">
             <div class="r1 c2"><div>{{ title }}</div></div>
         </div>
+        <div class="big_void"></div>
 
-        <div class="form_container">
-            {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
-            <div>
-                {{ form_label(form.name) }}
-                {{ form_widget(form.name) }}
-            </div>
-            <div>
-                {{ form_label(form.imageFile) }}
-                {{ form_widget(form.imageFile) }}
-            </div>
-            {% if item.image %}
-                <div>
-                    <p>Текущее изображение:</p>
-                    <img src="{{ asset('images/items/' ~ item.image) }}" width="150">
-                </div>
-            {% endif %}
-            <div>
-                {{ form_label(form.price) }}
-                {{ form_widget(form.price) }}
-            </div>
-            <div>
-                {{ form_label(form.last) }}
-                {{ form_widget(form.last) }}
-            </div>
-            <button type="submit" class="button">Сохранить</button>
-            {{ form_end(form) }}
+            
+            
+        <form action="{{ item is defined and item.id ? path('item_edit', {'id': item.id}) : path('item_create') }}" 
+      method="post" enctype="multipart/form-data">
+    
+    {{ form_row(form._token) }}
+
+    <label for="name">Название</label>
+    {{ form_widget(form.name, {'attr': {'type': 'text'}}) }}
+    <div class="error_error">{{ form_errors(form.name) }}</div>
+
+     <label for="description">Описание</label>
+    {{ form_widget(form.description, {'attr': {'type': 'text'}}) }}
+    <div class="error_error">{{ form_errors(form.description) }}</div>
+
+    <label for="imageFile">Изображение</label>
+    {{ form_widget(form.imageFile, {'attr': {'type': 'file', 'accept': 'image/*'}}) }}
+    <div class="error_error">{{ form_errors(form.imageFile) }}</div>
+
+    {% if item is defined and item.image %}
+        <div class="image_in_form">
+            <p>Текущее изображение:</p>
+            <img src="{{ asset('images/items/' ~ item.image) }}" class="img_form">
         </div>
+    {% endif %}
+
+    <label for="price">Цена</label>
+    {{ form_widget(form.price, {'attr': {'type': 'text'}}) }}
+    <div class="error_error">{{ form_errors(form.price) }}</div>
+
+    <label for="last">Количество в наличии</label>
+    {{ form_widget(form.last, {'attr': {'type': 'number', 'min': '0'}}) }}
+    <div class="error_error">{{ form_errors(form.last) }}</div>
+
+    <input type="submit" value="отправить">
+</form>
+
     </main>
 {% endblock %}

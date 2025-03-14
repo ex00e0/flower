@@ -12,25 +12,21 @@
 
 
     <form action="{{ path('app_register') }}" method="post">
-        {# Токен защиты CSRF #}
+
         {{ form_row(form._token) }}
 
-        {# Поле имени #}
         <label for="name">Имя</label>
         {{ form_widget(form.name, {'attr': {'type': 'text'}}) }}
         {{ form_errors(form.name) }}
 
-        {# Поле email (логина) #}
         <label for="login">Электронная почта</label>
         {{ form_widget(form.login, {'attr': {'type': 'email'}}) }}
         <div class="error_error">{{ form_errors(form.login) }}</div>
 
-        {# Поле пароля #}
         <label for="password">Пароль</label>
         {{ form_widget(form.password, {'attr': {'type': 'password'}}) }}
         <div class="error_error">{{ form_errors(form.password) }}</div>
 
-        {# Кнопка отправки #}
         <input type="submit" value="отправить">
         <a class="no_acc" href="{{ path('app_login') }}">Уже есть аккаунт? Авторизуйтесь</a>
     </form>
