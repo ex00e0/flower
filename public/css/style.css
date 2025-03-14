@@ -651,3 +651,28 @@ input[type='submit'] {
     width:15vmax;
     height:15vmax;
 }
+footer {
+    display: grid;
+    grid-template-columns: 9.5% 1fr 1fr 15%  9.5%;
+    grid-template-rows: 100%;
+    height: 7vmax;
+    align-items: center;
+}
+.address, .phone {
+    font-family: "Inter";
+    color:black;
+    font-size: 1.2vmax;
+}
+.about_us {
+    display: grid;
+    grid-template-columns: 13% 1fr 9.5%;
+    grid-template-rows: 100%;
+    height: 7vmax;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), url('../images/nn.jpg');
+    background-size: cover;
+    font-family: "Inter";
+    color:black;
+    font-size: 1.3vmax;
+    text-align: center;
+    align-items: center;
+}

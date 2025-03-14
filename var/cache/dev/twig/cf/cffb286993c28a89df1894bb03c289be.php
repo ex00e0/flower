@@ -109,53 +109,45 @@ class __TwigTemplate_4c84a660c88c44bb23d961ec204f9204 extends Template
         // line 14
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         yield "\" method=\"post\">
+
         ";
         // line 16
-        yield "        ";
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 16, $this->source); })()), "_token", [], "any", false, false, false, 16), 'row');
         yield "
 
+        <label for=\"name\">Имя</label>
         ";
         // line 19
-        yield "        <label for=\"name\">Имя</label>
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 19, $this->source); })()), "name", [], "any", false, false, false, 19), 'widget', ["attr" => ["type" => "text"]]);
+        yield "
         ";
         // line 20
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 20, $this->source); })()), "name", [], "any", false, false, false, 20), 'widget', ["attr" => ["type" => "text"]]);
-        yield "
-        ";
-        // line 21
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 21, $this->source); })()), "name", [], "any", false, false, false, 21), 'errors');
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 20, $this->source); })()), "name", [], "any", false, false, false, 20), 'errors');
         yield "
 
+        <label for=\"login\">Электронная почта</label>
         ";
+        // line 23
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 23, $this->source); })()), "login", [], "any", false, false, false, 23), 'widget', ["attr" => ["type" => "email"]]);
+        yield "
+        <div class=\"error_error\">";
         // line 24
-        yield "        <label for=\"login\">Электронная почта</label>
-        ";
-        // line 25
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 25, $this->source); })()), "login", [], "any", false, false, false, 25), 'widget', ["attr" => ["type" => "email"]]);
-        yield "
-        <div class=\"error_error\">";
-        // line 26
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 26, $this->source); })()), "login", [], "any", false, false, false, 26), 'errors');
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 24, $this->source); })()), "login", [], "any", false, false, false, 24), 'errors');
         yield "</div>
 
+        <label for=\"password\">Пароль</label>
         ";
-        // line 29
-        yield "        <label for=\"password\">Пароль</label>
-        ";
-        // line 30
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 30, $this->source); })()), "password", [], "any", false, false, false, 30), 'widget', ["attr" => ["type" => "password"]]);
+        // line 27
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 27, $this->source); })()), "password", [], "any", false, false, false, 27), 'widget', ["attr" => ["type" => "password"]]);
         yield "
         <div class=\"error_error\">";
-        // line 31
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 31, $this->source); })()), "password", [], "any", false, false, false, 31), 'errors');
+        // line 28
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 28, $this->source); })()), "password", [], "any", false, false, false, 28), 'errors');
         yield "</div>
 
-        ";
-        // line 34
-        yield "        <input type=\"submit\" value=\"отправить\">
+        <input type=\"submit\" value=\"отправить\">
         <a class=\"no_acc\" href=\"";
-        // line 35
+        // line 31
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         yield "\">Уже есть аккаунт? Авторизуйтесь</a>
     </form>
@@ -194,7 +186,7 @@ class __TwigTemplate_4c84a660c88c44bb23d961ec204f9204 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  159 => 35,  156 => 34,  151 => 31,  147 => 30,  144 => 29,  139 => 26,  135 => 25,  132 => 24,  127 => 21,  123 => 20,  120 => 19,  114 => 16,  110 => 14,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  151 => 31,  145 => 28,  141 => 27,  135 => 24,  131 => 23,  125 => 20,  121 => 19,  115 => 16,  110 => 14,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -213,25 +205,21 @@ class __TwigTemplate_4c84a660c88c44bb23d961ec204f9204 extends Template
 
 
     <form action=\"{{ path('app_register') }}\" method=\"post\">
-        {# Токен защиты CSRF #}
+
         {{ form_row(form._token) }}
 
-        {# Поле имени #}
         <label for=\"name\">Имя</label>
         {{ form_widget(form.name, {'attr': {'type': 'text'}}) }}
         {{ form_errors(form.name) }}
 
-        {# Поле email (логина) #}
         <label for=\"login\">Электронная почта</label>
         {{ form_widget(form.login, {'attr': {'type': 'email'}}) }}
         <div class=\"error_error\">{{ form_errors(form.login) }}</div>
 
-        {# Поле пароля #}
         <label for=\"password\">Пароль</label>
         {{ form_widget(form.password, {'attr': {'type': 'password'}}) }}
         <div class=\"error_error\">{{ form_errors(form.password) }}</div>
 
-        {# Кнопка отправки #}
         <input type=\"submit\" value=\"отправить\">
         <a class=\"no_acc\" href=\"{{ path('app_login') }}\">Уже есть аккаунт? Авторизуйтесь</a>
     </form>

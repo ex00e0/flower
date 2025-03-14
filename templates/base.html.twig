@@ -29,14 +29,14 @@
                          <a href="{{path('logout')}}"><img src="{{ asset('images/enter (1).png') }}" ></a>
 
                         {% else %}
-                        <a href="{{path('app_index')}}">О нас</a>
+                        <a href="{{path('app_index')}}#about_us">О нас</a>
                          <a href="{{path('orders')}}">Заказы</a> 
                          <a href="{{path('cart')}}"><img src="{{ asset('images/shopping-cart (2).png') }}" ></a>
                          <a href="{{path('logout')}}"><img src="{{ asset('images/enter (1).png') }}" ></a>
                          {% endif %}
                     {% else %}
-                        <a href="{{path('app_index')}}">О нас</a>
-                        <a href="catalog.html">Контакты</a>
+                        <a href="{{path('app_index')}}#about_us">О нас</a>
+                        <a href="{{path('app_index')}}#footer">Контакты</a>
                         <a href="{{path('app_login')}}"><img src="{{ asset('images/enter (1).png') }}" ></a>
                     
                     {% endif %}
@@ -47,7 +47,11 @@
         </header>
        
         {% block body %}{% endblock %}
-        
+        <footer>
+            <div class="address r1 c2">Наш адрес - г.Уфа, ул.Кирова, 65</div>
+            <div class="phone r1 c3">Номер телефона - +7999-899-89-89</div>
+            <div class="logo r1 c4">FLOWER</div>
+        </footer>
         <script>
         if (document.body.scrollHeight < document.documentElement.clientHeight) {
             let diff = document.documentElement.clientHeight - document.body.scrollHeight;

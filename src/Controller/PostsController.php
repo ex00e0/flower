@@ -88,11 +88,7 @@ public function makeOrder(
     $compound = [];
     foreach ($cartItems as $cartItem) {
         $itemId = $cartItem->getItem()->getId(); 
-        if (isset($compound[$itemId])) {
-            $compound[$itemId] += 1; 
-        } else {
-            $compound[$itemId] = 1; 
-        }
+        $compound[$itemId] = $cartItem->getAddon(); 
     }
 
     $order = new Order();

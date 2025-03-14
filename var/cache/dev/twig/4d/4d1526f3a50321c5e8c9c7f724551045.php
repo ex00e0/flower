@@ -106,7 +106,7 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
                 // line 32
                 yield "                        <a href=\"";
                 yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_index");
-                yield "\">О нас</a>
+                yield "#about_us\">О нас</a>
                          <a href=\"";
                 // line 33
                 yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("orders");
@@ -131,8 +131,11 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
             // line 38
             yield "                        <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_index");
-            yield "\">О нас</a>
-                        <a href=\"catalog.html\">Контакты</a>
+            yield "#about_us\">О нас</a>
+                        <a href=\"";
+            // line 39
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_index");
+            yield "#footer\">Контакты</a>
                         <a href=\"";
             // line 40
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
@@ -153,7 +156,11 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
         // line 49
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
         // line 50
-        yield "        
+        yield "        <footer>
+            <div class=\"address r1 c2\">Наш адрес - г.Уфа, ул.Кирова, 65</div>
+            <div class=\"phone r1 c3\">Номер телефона - +7999-899-89-89</div>
+            <div class=\"logo r1 c4\">FLOWER</div>
+        </footer>
         <script>
         if (document.body.scrollHeight < document.documentElement.clientHeight) {
             let diff = document.documentElement.clientHeight - document.body.scrollHeight;
@@ -266,7 +273,7 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  227 => 49,  216 => 13,  203 => 12,  188 => 8,  175 => 7,  156 => 50,  154 => 49,  146 => 43,  138 => 40,  132 => 38,  129 => 37,  122 => 35,  116 => 34,  112 => 33,  107 => 32,  99 => 29,  95 => 28,  90 => 27,  87 => 26,  85 => 25,  79 => 22,  75 => 21,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
+        return array (  234 => 49,  223 => 13,  210 => 12,  195 => 8,  182 => 7,  159 => 50,  157 => 49,  149 => 43,  141 => 40,  137 => 39,  132 => 38,  129 => 37,  122 => 35,  116 => 34,  112 => 33,  107 => 32,  99 => 29,  95 => 28,  90 => 27,  87 => 26,  85 => 25,  79 => 22,  75 => 21,  66 => 14,  64 => 12,  61 => 11,  59 => 7,  51 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -302,14 +309,14 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
                          <a href=\"{{path('logout')}}\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
 
                         {% else %}
-                        <a href=\"{{path('app_index')}}\">О нас</a>
+                        <a href=\"{{path('app_index')}}#about_us\">О нас</a>
                          <a href=\"{{path('orders')}}\">Заказы</a> 
                          <a href=\"{{path('cart')}}\"><img src=\"{{ asset('images/shopping-cart (2).png') }}\" ></a>
                          <a href=\"{{path('logout')}}\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
                          {% endif %}
                     {% else %}
-                        <a href=\"{{path('app_index')}}\">О нас</a>
-                        <a href=\"catalog.html\">Контакты</a>
+                        <a href=\"{{path('app_index')}}#about_us\">О нас</a>
+                        <a href=\"{{path('app_index')}}#footer\">Контакты</a>
                         <a href=\"{{path('app_login')}}\"><img src=\"{{ asset('images/enter (1).png') }}\" ></a>
                     
                     {% endif %}
@@ -320,7 +327,11 @@ class __TwigTemplate_0bddd17e9d2b5212b157f47983279a6f extends Template
         </header>
        
         {% block body %}{% endblock %}
-        
+        <footer>
+            <div class=\"address r1 c2\">Наш адрес - г.Уфа, ул.Кирова, 65</div>
+            <div class=\"phone r1 c3\">Номер телефона - +7999-899-89-89</div>
+            <div class=\"logo r1 c4\">FLOWER</div>
+        </footer>
         <script>
         if (document.body.scrollHeight < document.documentElement.clientHeight) {
             let diff = document.documentElement.clientHeight - document.body.scrollHeight;
